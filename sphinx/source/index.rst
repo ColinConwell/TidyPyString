@@ -4,7 +4,7 @@ TidyPyString Reference
 .. toctree::
    :maxdepth: 5
 
-   quickdoc
+   quickview
    api-ref
 
 
