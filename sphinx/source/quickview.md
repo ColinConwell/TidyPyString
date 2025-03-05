@@ -1,4 +1,4 @@
-# TidyPyString Starter Guide
+# Package Overview
 
 `tidystring` is a toolbox for performing ready-to-use string operations on python strings -- whether they be single strings, lists of strings, or pandas Series typed as strings. Inspired by R's `stringr` package from the tidyverse, it provides consistent, intuitive string manipulation functions.
 
