@@ -71,3 +71,7 @@ Here's a short-list of some stand-outs:
 
 - [`siuba`](https://siuba.org/)
 - [`pyjanitor`](https://pyjanitor-devs.github.io/pyjanitor/)
+
+## Use of Generative AI
+
+All code in this package has been tested by me (a human), but much of the documentation comes from a custom generative AI auto-documentation pipeline, powered by Claude-Sonnet-3.7. Documentation may thus be subject to some error. Please feel free to file an issue if this appears to be the case.
