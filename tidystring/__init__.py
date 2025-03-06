@@ -1,6 +1,6 @@
 # r''' .. include:: ../writeup/README.md '''
 
-from ._tidystring import (
+from .methods import (
     camel_to_snake,
     snake_to_camel,
     str_detect,

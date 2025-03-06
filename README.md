@@ -4,8 +4,30 @@ Easier string operations in Python, inspired by the tidyverse (especially [`stri
 
 All functions can be run both on single strings and vectors of strings, with direct support for base python's string type (`str`), lists or arrays of strings (`[str, str, ...]`), and Pandas columns / series (`pd.Series`), and indirect support other string-like or string-typed variables.
 
+## Quick Start
+
+Install the package from PyPI:
+
 ```shell
-pip install git+https://github.com/ColinConwell/PyTidyString.git
+pip install tidystring
+```
+
+Then, wrangle those strings:
+
+```python
+import pandas as pd
+import tidystring as ts
+
+strings = pd.Series(["text_alpha", "text_beta", "text_gamma"])
+
+## detect if strings contain "alpha"
+ts.str_detect(strings, "alpha")
+
+## remove "alpha" from all strings
+ts.str_remove(strings, "alpha")
+
+## convert all strings to title case, removing dashes
+ts.str_to_title(strings, remove_dashes=True)
 ```
 
 ## Inspired by [`StringR`](https://stringr.tidyverse.org/reference/index.html)
@@ -44,6 +66,7 @@ pip install git+https://github.com/ColinConwell/PyTidyString.git
 `tidypystring`'s currently available `stringr` ports:
 
 - `str_detect()`
+- `str_remove()`
 - `str_extract()`
 - `str_split()`
 - `str_trim()`
@@ -72,6 +95,16 @@ Here's a short-list of some stand-outs:
 - [`siuba`](https://siuba.org/)
 - [`pyjanitor`](https://pyjanitor-devs.github.io/pyjanitor/)
 
-## Use of Generative AI
+## Development Notes
+
+### Install from GitHub
+
+To install the latest version from GitHub, simply run:
+
+```bash
+pip install git+https://github.com/ColinConwell/TidyPyString.git
+```
+
+### Use of Generative AI
 
 All code in this package has been tested by me (a human), but much of the documentation comes from a custom generative AI auto-documentation pipeline, powered by Claude-Sonnet-3.7. Documentation may thus be subject to some error. Please feel free to file an issue if this appears to be the case.

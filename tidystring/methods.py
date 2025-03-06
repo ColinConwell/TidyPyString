@@ -1,79 +1,6 @@
 import re, pandas as pd
 
-# Intake / Output -----------------------------
-
-def _series_intake(string):
-    """Convert input to pandas Series if not already.
-
-    Args:
-        string (str or pd.Series): Input string or pandas Series
-
-    Returns:
-        tuple: (converted input, input type)
-            - pd.Series: Converted input
-            - type: Original input type
-    """
-    if isinstance(string, pd.Series):
-        return string, pd.Series
-    
-    return pd.Series([string]), str
-
-def _string_intake(string):
-    """Convert input to pandas Series with str accessor if not already.
-
-    Args:
-        string (str or pd.Series): Input string or pandas Series
-
-    Returns:
-        tuple: (converted input with str accessor, input type)
-            - pd.Series.str: Converted input with str accessor
-            - type: Original input type
-    """
-    if isinstance(string, pd.Series):
-        return string.str, pd.Series
-    
-    return pd.Series([string]).str, str
-
-def _string_output(string, str_type):
-    """Convert output back to original input type.
-
-    Args:
-        string (str or pd.Series): Processed string or pandas Series
-        str_type (type): Original input type
-
-    Returns:
-        str or pd.Series: Processed string in original input type
-    """
-    if str_type == pd.Series:
-        return string
-    
-    return string[0] # single string
-
-def _handle_inplace(df, kwargs):
-    """Handle inplace and copy operations for DataFrame modifications.
-
-    Args:
-        df (pd.DataFrame): Input DataFrame
-        kwargs (dict): Keyword arguments containing 'inplace' and 'copy' options
-
-    Returns:
-        tuple: (DataFrame to operate on, boolean indicating if operation is inplace)
-            - pd.DataFrame: DataFrame to operate on
-            - bool: Indicates if operation is inplace
-
-    Raises:
-        ValueError: If both 'inplace' and 'copy' are set to True
-    """
-    if kwargs.get('inplace', False) and kwargs.get('copy', False):
-        raise ValueError("Cannot set both inplace and copy to True.")
-    
-    if kwargs.pop('copy', False):
-        return df.copy(), False
-    
-    if kwargs.pop('inplace', False):
-        return df, True # inplace
-    
-    return df.copy(), False # if not specified, default to False
+from .handlers import _series_intake, _string_intake, _string_output
 
 # String Re-Case -------------------------------
 
@@ -131,6 +58,36 @@ def str_detect(string, pattern, **kwargs):
     """
     string, str_type = _string_intake(string)
     result = string.contains(pattern, **kwargs)
+    return _string_output(result, str_type)
+
+def str_replace(string, *args, n=None, **kwargs):
+    """Replace all occurrences of specified patterns in string.
+
+    Args:
+        string (str or pd.Series): Input string or pandas Series
+        *args: Patterns to replace in the string
+        **kwargs: Additional keyword arguments for str.replace()
+            n (int, optional): Number of replacements to make. Defaults to None (all occurrences).
+
+    Returns:
+        str or pd.Series: String with patterns replaced
+
+    Examples:
+        >>> str_replace("hello world", "o", "a")
+        'hellar warld'
+        >>> str_replace("hello world", "o", "a", n=1)
+        'hellar world'
+        >>> str_replace(pd.Series(["hello world", "hello there"]), "o", "a", n=1)
+        0    hellar world
+        1    hellar there
+        dtype: object
+    """
+
+    if kwargs.get('n', None) is not None:
+        kwargs['count'] = kwargs.pop('n')
+
+    string, str_type = _string_intake(string)
+    result = string.replace(*args, **kwargs)
     return _string_output(result, str_type)
     
 def str_remove(string, *args, **kwargs):
@@ -231,6 +188,7 @@ def str_to_title(string, **kwargs):
     Args:
         string (str or pd.Series): Input string or pandas Series
         **kwargs: Additional keyword arguments for pandas str.title()
+            remove_dashes (bool, optional): Remove dashes from string. Defaults to False.
 
     Returns:
         str or pd.Series: Title-cased string
@@ -243,6 +201,9 @@ def str_to_title(string, **kwargs):
         1    Python Code
         dtype: object
     """
+    if kwargs.pop('remove_dashes', False):
+        string = str_dash_to_space(string)
+
     string, str_type = _string_intake(string)
     result = string.title(**kwargs)
     return _string_output(result, str_type)
@@ -414,6 +375,33 @@ def str_concat(*args, sep='_', **kwargs):
         return sep.join(args)
     
     raise TypeError("All arguments must be either all strings or all pandas Series")
+
+def str_dash_to_space(string, dashes=["-", "_"], **kwargs):
+    """Replace all occurrences of specified dashes with spaces.
+
+    Args:
+        string (str or pd.Series): Input string or pandas Series
+        dashes (list, optional): List of dashes to replace. Defaults to ["-", "_"].
+        **kwargs: Additional keyword arguments for str_replace()
+            n (int, optional): Number of replacements to make. Defaults to None (all occurrences).
+
+    Returns:
+        str or pd.Series: String with dashes replaced by spaces
+
+    Examples:
+        >>> str_dash_to_space("hello-world")
+        'hello world'
+        >>> str_dash_to_space(pd.Series(["hello-world", "hello_world"]))
+        0    hello world
+        1    hello world
+        dtype: object
+    """
+    if kwargs.get('n', None) is not None:
+        kwargs['count'] = kwargs.pop('n')
+
+    for dash in dashes:
+        string = str_replace(string, dash, " ", **kwargs)
+    return string
 
 # search + replace methods ----------------------------------
 
