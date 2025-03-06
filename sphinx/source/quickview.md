@@ -7,7 +7,13 @@
 To get started, simply install the package (currently on GitHub):
 
 ```shell
-pip install git+https://github.com/ColinConwell/PyTidyString.git
+pip install tidystring
+```
+
+Or, the latest version from GitHub:
+
+```shell
+pip install git+https://github.com/ColinConwell/TidyPyString.git
 ```
 
 ## Quick Start Examples

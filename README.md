@@ -12,6 +12,10 @@ Install the package from PyPI:
 pip install tidystring
 ```
 
+Requirements:
+- Python 3.9 or higher
+- pandas 1.2.4 or higher
+
 Then, wrangle those strings:
 
 ```python
@@ -100,12 +104,30 @@ Here's a short-list of some stand-outs:
 
 ## Development Notes
 
-### Install from GitHub
+### Installation Options
 
-To install the latest version from GitHub, simply run:
+Install the stable version from PyPI:
+
+```bash
+pip install tidystring
+```
+
+Or install the latest development version from GitHub:
 
 ```bash
 pip install git+https://github.com/ColinConwell/TidyPyString.git
+```
+
+### Code Formatting
+
+If you're contributing to the project, you can use the provided formatting scripts:
+
+```bash
+# Format the code (modifies files)
+./devops/run_format.sh
+
+# Check code formatting (doesn't modify files)
+./devops/run_linter.sh
 ```
 
 ### Use of Generative AI

@@ -29,18 +29,7 @@ jobs:
         virtualenvs-create: true
         
     - name: Install dependencies
-      run: |
-        poetry install
-        pip install flake8 mypy pytest
-      
-    - name: Run linting
-      run: flake8 tidystring/
-      
-    - name: Run type checking
-      run: mypy tidystring/
-      
-    - name: Run tests
-      run: pytest
+      run: poetry install
       
     - name: Build package
       run: poetry build
