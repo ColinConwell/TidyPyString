@@ -63,7 +63,9 @@ ts.str_to_title(strings, remove_dashes=True)
 - `str_squish()`
 - `str_flatten()`
 
-`tidypystring`'s currently available `stringr` ports:
+(All of these are on my to-do list, but for now...)
+
+`tidystring`'s currently available `stringr` ports:
 
 - `str_detect()`
 - `str_remove()`
@@ -74,7 +76,7 @@ ts.str_to_title(strings, remove_dashes=True)
 - `str_to_upper()`
 - `str_to_lower()`
 
-Additional `tidypystring` functions not in `stringr`:
+Additional `tidystring` functions not in `stringr`:
 
 - `str_concat`
 - `str_startswith`
@@ -82,6 +84,7 @@ Additional `tidypystring` functions not in `stringr`:
 - `str_upper_cut`
 - `str_search_apply`
 - `str_search_recase`
+- `str_dash_to_space`
 
 
 Check out the [documentation]() for more information.
