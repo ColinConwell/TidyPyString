@@ -85,9 +85,6 @@ Thumbs.db
 # R Environment Variables
 .Renviron
 
-# pkgdown site
-docs/
-
 # RStudio Connect folder
 rsconnect/
 
@@ -152,7 +149,8 @@ coverage.xml
 .pytest_cache/
 
 # Sphinx / mkdocs
-/site
+site/
+docs/build/
 docs/_build/
 
 # Environments
