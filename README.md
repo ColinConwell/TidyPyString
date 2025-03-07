@@ -22,7 +22,7 @@ Then, wrangle those strings:
 import pandas as pd
 import tidystring as ts
 
-strings = pd.Series(["text_alpha", "text_beta", "text_gamma"])
+strings = ["text_alpha", "text_beta", "text_gamma"]
 
 ## detect if strings contain "alpha"
 ts.str_detect(strings, "alpha")
@@ -32,6 +32,12 @@ ts.str_remove(strings, "alpha")
 
 ## convert all strings to title case, removing dashes
 ts.str_to_title(strings, remove_dashes=True)
+
+# convert strings to pd.Series
+strings = pd.Series(strings)
+
+# replace "text" with "enum" in all strings
+ts.str_replace(strings, "text", "enum")
 ```
 
 ## Inspired by [`StringR`](https://stringr.tidyverse.org/reference/index.html)
@@ -76,9 +82,18 @@ ts.str_to_title(strings, remove_dashes=True)
 - `str_extract()`
 - `str_split()`
 - `str_trim()`
+- `str_count()`
+- `str_locate()`
+- `str_locate_all()`
+- `str_sub()`
+- `str_pad()`
+- `str_dup()`
+- `str_squish()`
+- `str_wrap()`
 - `str_to_title()`
 - `str_to_upper()`
 - `str_to_lower()`
+- `str_length()`
 
 Additional `tidystring` functions not in `stringr`:
 
@@ -89,6 +104,8 @@ Additional `tidystring` functions not in `stringr`:
 - `str_search_apply`
 - `str_search_recase`
 - `str_dash_to_space`
+- `camel_to_snake`
+- `snake_to_camel`
 
 
 Check out the [documentation]() for more information.

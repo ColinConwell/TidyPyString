@@ -2,11 +2,12 @@ import pandas as pd
 
 # Intake / Output -----------------------------
 
+
 def _series_intake(string):
     """Convert input to pandas Series if not already.
 
     Args:
-        string (str or pd.Series): Input string or pandas Series
+        string (str, list, or pd.Series): Input string, list of strings, or pandas Series
 
     Returns:
         tuple: (converted input, input type)
@@ -15,14 +16,17 @@ def _series_intake(string):
     """
     if isinstance(string, pd.Series):
         return string, pd.Series
-    
+    elif isinstance(string, list):
+        return pd.Series(string), list
+
     return pd.Series([string]), str
+
 
 def _string_intake(string):
     """Convert input to pandas Series with str accessor if not already.
 
     Args:
-        string (str or pd.Series): Input string or pandas Series
+        string (str, list, or pd.Series): Input string, list of strings, or pandas Series
 
     Returns:
         tuple: (converted input with str accessor, input type)
@@ -31,8 +35,11 @@ def _string_intake(string):
     """
     if isinstance(string, pd.Series):
         return string.str, pd.Series
-    
+    elif isinstance(string, list):
+        return pd.Series(string).str, list
+
     return pd.Series([string]).str, str
+
 
 def _string_output(string, str_type):
     """Convert output back to original input type.
@@ -42,12 +49,15 @@ def _string_output(string, str_type):
         str_type (type): Original input type
 
     Returns:
-        str or pd.Series: Processed string in original input type
+        str, list, or pd.Series: Processed string in original input type
     """
     if str_type == pd.Series:
         return string
-    
-    return string[0] # single string
+    elif str_type == list:
+        return string.tolist()
+
+    return string[0]  # single string
+
 
 def _handle_inplace(df, kwargs):
     """Handle inplace and copy operations for DataFrame modifications.
@@ -64,13 +74,13 @@ def _handle_inplace(df, kwargs):
     Raises:
         ValueError: If both 'inplace' and 'copy' are set to True
     """
-    if kwargs.get('inplace', False) and kwargs.get('copy', False):
+    if kwargs.get("inplace", False) and kwargs.get("copy", False):
         raise ValueError("Cannot set both inplace and copy to True.")
-    
-    if kwargs.pop('copy', False):
+
+    if kwargs.pop("copy", False):
         return df.copy(), False
-    
-    if kwargs.pop('inplace', False):
-        return df, True # inplace
-    
-    return df.copy(), False # if not specified, default to False
+
+    if kwargs.pop("inplace", False):
+        return df, True  # inplace
+
+    return df.copy(), False  # if not specified, default to False
