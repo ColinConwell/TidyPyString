@@ -129,7 +129,7 @@ Install the stable version from PyPI:
 pip install tidystring
 ```
 
-Or install the latest development version from GitHub:
+Or, the latest version from GitHub:
 
 ```bash
 pip install git+https://github.com/ColinConwell/TidyPyString.git
