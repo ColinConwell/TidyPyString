@@ -1,0 +1,16 @@
+.bd-header-article {
+  padding-left: 2rem;  /* Adjust this value as needed */
+  padding-right: 2rem; /* Adjust this value as needed */
+}
+
+.bd-header-article .bd-header-article__left-button-container {
+  margin-left: 0;
+}
+
+.bd-header-article .bd-header-article__right-button-container {
+  margin-right: 0;
+}
+
+.bd-page-width {
+  max-width: none;  /* Remove max-width constraint if needed */
+}

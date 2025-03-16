@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+<html :class="{'dark': darkMode === 'dark' || (darkMode === 'system' &amp;&amp; window.matchMedia('(prefers-color-scheme: dark)').matches)}" class="scroll-smooth" data-content_root="./" lang="en" x-data="{ darkMode: localStorage.getItem('darkMode') || localStorage.setItem('darkMode', 'system'), activeSection: '' }" x-init="$watch('darkMode', val =&gt; localStorage.setItem('darkMode', val))">
+<head>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta charset="utf-8"/>
+<meta content="white" media="(prefers-color-scheme: light)" name="theme-color"/>
+<meta content="black" media="(prefers-color-scheme: dark)" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>API Reference | TidyPyString Documentation</title>
+<meta content="API Reference | TidyPyString Documentation" property="og:title"/>
+<meta content="API Reference | TidyPyString Documentation" name="twitter:title"/>
+<link href="_static/pygments.css?v=03e43079" rel="stylesheet" type="text/css"/>
+<link href="_static/theme.css?v=42baaae4" rel="stylesheet" type="text/css"/>
+<link href="_static/styles/book.css?v=3ce7430b" rel="stylesheet" type="text/css"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="usage/advanced_usage.html" rel="prev" title="Advanced Usage"/>
+<script>
+    <!-- Prevent Flash of wrong theme -->
+      const userPreference = localStorage.getItem('darkMode');
+      let mode;
+      if (userPreference === 'dark' || window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        mode = 'dark';
+        document.documentElement.classList.add('dark');
+      } else {
+        mode = 'light';
+      }
+      if (!userPreference) {localStorage.setItem('darkMode', mode)}
+    </script>
+</head>
+<body :class="{ 'overflow-hidden': showSidebar }" class="min-h-screen font-sans antialiased bg-background text-foreground" x-data="{ showSidebar: false, showScrollTop: false }">
+<div @click.self="showSidebar = false" class="fixed inset-0 z-50 overflow-hidden bg-background/80 backdrop-blur-sm md:hidden" x-cloak="" x-show="showSidebar"></div><div class="relative flex flex-col min-h-screen" id="page"><a class="absolute top-0 left-0 z-[100] block bg-background p-4 text-xl transition -translate-x-full opacity-0 focus:translate-x-0 focus:opacity-100" href="#content">
+      Skip to content
+    </a><header class="sticky top-0 z-40 w-full border-b shadow-sm border-border supports-backdrop-blur:bg-background/60 bg-background/95 backdrop-blur"><div class="container flex items-center h-14">
+<div class="hidden mr-4 md:flex">
+<a class="flex items-center mr-6" href="index.html"><span class="hidden font-bold sm:inline-block text-clip whitespace-nowrap">TidyPyString Documentation</span>
+</a></div><button @click="showSidebar = true" class="inline-flex items-center justify-center h-10 px-0 py-2 mr-2 text-base font-medium transition-colors rounded-md hover:text-accent-foreground hover:bg-transparent md:hidden" type="button">
+<svg aria-hidden="true" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M152.587 825.087q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440Zm0-203.587q-19.152 0-32.326-13.174T107.087 576q0-19.152 13.174-32.326t32.326-13.174h320q19.152 0 32.326 13.174T518.087 576q0 19.152-13.174 32.326T472.587 621.5h-320Zm0-203.587q-19.152 0-32.326-13.174t-13.174-32.326q0-19.152 13.174-32.326t32.326-13.174h440q19.152 0 32.326 13.174t13.174 32.326q0 19.152-13.174 32.326t-32.326 13.174h-440ZM708.913 576l112.174 112.174q12.674 12.674 12.674 31.826t-12.674 31.826Q808.413 764.5 789.261 764.5t-31.826-12.674l-144-144Q600 594.391 600 576t13.435-31.826l144-144q12.674-12.674 31.826-12.674t31.826 12.674q12.674 12.674 12.674 31.826t-12.674 31.826L708.913 576Z"></path>
+</svg>
+<span class="sr-only">Toggle navigation menu</span>
+</button>
+<div class="flex items-center justify-between flex-1 space-x-2 sm:space-x-4 md:justify-end">
+<div class="flex-1 w-full md:w-auto md:flex-none"><form @keydown.k.window.meta="$refs.search.focus()" action="search.html" class="relative flex items-center group" id="searchbox" method="get">
+<input aria-label="Search the docs" class="inline-flex items-center font-medium transition-colors bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background border border-input hover:bg-accent focus:bg-accent hover:text-accent-foreground focus:text-accent-foreground hover:placeholder-accent-foreground py-2 px-4 relative h-9 w-full justify-start rounded-[0.5rem] text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64" id="search-input" name="q" placeholder="Search ..." type="search" x-ref="search"/>
+<kbd class="pointer-events-none absolute right-1.5 top-2 hidden h-5 select-none text-muted-foreground items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex group-hover:bg-accent group-hover:text-accent-foreground">
+<span class="text-xs">⌘</span>
+    K
+  </kbd>
+</form>
+</div>
+<nav class="flex items-center space-x-1">
+<button @click="darkMode = darkMode === 'light' ? 'dark' : 'light'" aria-label="Color theme switcher" class="relative inline-flex items-center justify-center px-0 text-sm font-medium transition-colors rounded-md hover:bg-accent hover:text-accent-foreground h-9 w-9" type="button">
+<svg class="absolute transition-all scale-100 rotate-0 dark:-rotate-90 dark:scale-0" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 685q45.456 0 77.228-31.772Q589 621.456 589 576q0-45.456-31.772-77.228Q525.456 467 480 467q-45.456 0-77.228 31.772Q371 530.544 371 576q0 45.456 31.772 77.228Q434.544 685 480 685Zm0 91q-83 0-141.5-58.5T280 576q0-83 58.5-141.5T480 376q83 0 141.5 58.5T680 576q0 83-58.5 141.5T480 776ZM80 621.5q-19.152 0-32.326-13.174T34.5 576q0-19.152 13.174-32.326T80 530.5h80q19.152 0 32.326 13.174T205.5 576q0 19.152-13.174 32.326T160 621.5H80Zm720 0q-19.152 0-32.326-13.174T754.5 576q0-19.152 13.174-32.326T800 530.5h80q19.152 0 32.326 13.174T925.5 576q0 19.152-13.174 32.326T880 621.5h-80Zm-320-320q-19.152 0-32.326-13.174T434.5 256v-80q0-19.152 13.174-32.326T480 130.5q19.152 0 32.326 13.174T525.5 176v80q0 19.152-13.174 32.326T480 301.5Zm0 720q-19.152 0-32.326-13.17Q434.5 995.152 434.5 976v-80q0-19.152 13.174-32.326T480 850.5q19.152 0 32.326 13.174T525.5 896v80q0 19.152-13.174 32.33-13.174 13.17-32.326 13.17ZM222.174 382.065l-43-42Q165.5 327.391 166 308.239t13.174-33.065q13.435-13.674 32.587-13.674t32.065 13.674l42.239 43q12.674 13.435 12.555 31.706-.12 18.272-12.555 31.946-12.674 13.674-31.445 13.413-18.772-.261-32.446-13.174Zm494 494.761-42.239-43q-12.674-13.435-12.674-32.087t12.674-31.565Q686.609 756.5 705.38 757q18.772.5 32.446 13.174l43 41.761Q794.5 824.609 794 843.761t-13.174 33.065Q767.391 890.5 748.239 890.5t-32.065-13.674Zm-42-494.761Q660.5 369.391 661 350.62q.5-18.772 13.174-32.446l41.761-43Q728.609 261.5 747.761 262t33.065 13.174q13.674 13.435 13.674 32.587t-13.674 32.065l-43 42.239q-13.435 12.674-31.706 12.555-18.272-.12-31.946-12.555Zm-495 494.761Q165.5 863.391 165.5 844.239t13.674-32.065l43-42.239q13.435-12.674 32.087-12.674t31.565 12.674Q299.5 782.609 299 801.38q-.5 18.772-13.174 32.446l-41.761 43Q231.391 890.5 212.239 890t-33.065-13.174ZM480 576Z"></path>
+</svg>
+<svg class="absolute transition-all scale-0 rotate-90 dark:rotate-0 dark:scale-100" fill="currentColor" height="24" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 936q-151 0-255.5-104.5T120 576q0-138 90-239.5T440 218q25-3 39 18t-1 44q-17 26-25.5 55t-8.5 61q0 90 63 153t153 63q31 0 61.5-9t54.5-25q21-14 43-1.5t19 39.5q-14 138-117.5 229T480 936Zm0-80q88 0 158-48.5T740 681q-20 5-40 8t-40 3q-123 0-209.5-86.5T364 396q0-20 3-40t8-40q-78 32-126.5 102T200 576q0 116 82 198t198 82Zm-10-270Z"></path>
+</svg>
+</button>
+</nav>
+</div>
+</div>
+</header>
+<div class="flex-1"><div class="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10"><aside :aria-hidden="!showSidebar" :class="{ 'translate-x-0': showSidebar }" class="fixed inset-y-0 left-0 md:top-14 z-50 md:z-30 bg-background md:bg-transparent transition-all duration-100 -translate-x-full md:translate-x-0 ml-0 p-6 md:p-0 md:-ml-2 md:h-[calc(100vh-3.5rem)] w-5/6 md:w-full shrink-0 overflow-y-auto border-r border-border md:sticky" id="left-sidebar">
+<a class="!justify-start text-sm md:!hidden bg-background" href="index.html"><span class="font-bold text-clip whitespace-nowrap">TidyPyString Documentation</span>
+</a>
+<div class="relative overflow-hidden md:overflow-auto my-4 md:my-0 h-[calc(100vh-8rem)] md:h-auto">
+<div class="overflow-y-auto h-full w-full relative pr-6"><nav class="table w-full min-w-full my-6 lg:my-8">
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/string_basics.html">Some Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/string_detection.html">Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/string_extraction.html">Extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/string_modification.html">Modification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/string_case.html">(Re)Casing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/string_utilities.html">Key Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/advanced_usage.html">Advanced Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a></li>
+</ul>
+</nav>
+</div>
+</div>
+<button @click="showSidebar = false" class="absolute md:hidden right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100" type="button">
+<svg class="h-4 w-4" fill="currentColor" height="24" stroke="none" viewbox="0 96 960 960" width="24" xmlns="http://www.w3.org/2000/svg">
+<path d="M480 632 284 828q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536 576l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480 632Z"></path>
+</svg>
+</button>
+</aside>
+<main class="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+<div class="w-full min-w-0 mx-auto">
+<nav aria-label="breadcrumbs" class="flex items-center mb-4 space-x-1 text-sm text-muted-foreground">
+<a class="overflow-hidden text-ellipsis whitespace-nowrap hover:text-foreground" href="index.html">
+<span class="hidden md:inline">TidyPyString Documentation</span>
+<svg aria-label="Home" class="md:hidden" fill="currentColor" height="18" stroke="none" viewbox="0 96 960 960" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M240 856h120V616h240v240h120V496L480 316 240 496v360Zm-80 80V456l320-240 320 240v480H520V696h-80v240H160Zm320-350Z"></path>
+</svg>
+</a>
+<div class="mr-1">/</div><span aria-current="page" class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">API Reference</span>
+</nav>
+<div id="content" role="main">
+<section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"><span>#</span></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_replace">
+<span class="sig-name descname"><span class="pre">str_replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_replace"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_replace" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_replace'"><span>#</span></a></dt>
+<dd><p>Replace all occurrences of specified pattern in string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Pattern to find</p></li>
+<li><p><strong>replacement</strong> (<em>str</em>) – String to replace pattern with</p></li>
+<li><p><strong>n</strong> (<em>int</em><em>, </em><em>optional</em>) – Number of replacements to make. Defaults to None (all occurrences).</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.replace()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String with pattern replaced</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_replace</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hellar warld'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_replace</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'hellar world'</span>
+</span><span id="line-5"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_replace</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"hello there"</span><span class="p">]),</span> <span class="s2">"o"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</span><span id="line-6"><span class="go">0    hellar world</span>
+</span><span id="line-7"><span class="go">1    hellar there</span>
+</span><span id="line-8"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_detect">
+<span class="sig-name descname"><span class="pre">str_detect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_detect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_detect" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_detect'"><span>#</span></a></dt>
+<dd><p>Detect the presence of a pattern in a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Regular expression pattern to detect</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.contains()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Boolean or collection of booleans indicating pattern presence</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>bool</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_detect</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">True</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_detect</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]),</span> <span class="s2">"o"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">0     True</span>
+</span><span id="line-5"><span class="go">1    False</span>
+</span><span id="line-6"><span class="go">dtype: bool</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_remove">
+<span class="sig-name descname"><span class="pre">str_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_remove"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_remove" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_remove'"><span>#</span></a></dt>
+<dd><p>Remove all occurrences of specified pattern from string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Pattern to remove from the string</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.replace()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String with pattern removed</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_remove</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hell wrld'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_remove</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]),</span> <span class="s2">"o"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">0    hell</span>
+</span><span id="line-5"><span class="go">1    wrld</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_extract">
+<span class="sig-name descname"><span class="pre">str_extract</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_extract"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_extract" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_extract'"><span>#</span></a></dt>
+<dd><p>Extract first match of pattern from string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Regular expression pattern to extract</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.extract()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>First match of pattern or None/NaN if no match</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_extract</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"h(\w+)"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'ello'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_extract</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"python"</span><span class="p">]),</span> <span class="s2">"\w</span><span class="si">{2}</span><span class="s2">o"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">0    hel</span>
+</span><span id="line-5"><span class="go">1    pyt</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_split">
+<span class="sig-name descname"><span class="pre">str_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxsplit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_split"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_split" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_split'"><span>#</span></a></dt>
+<dd><p>Split string by pattern into list of components.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Pattern to split on</p></li>
+<li><p><strong>maxsplit</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of splits. Defaults to -1 (all possible splits).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Split components</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>list</em> or pd.Series of lists</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_split</span><span class="p">(</span><span class="s2">"a.b.c"</span><span class="p">,</span> <span class="s2">"\."</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">['a', 'b', 'c']</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_split</span><span class="p">(</span><span class="s2">"a.b.c"</span><span class="p">,</span> <span class="s2">"\."</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">['a', 'b.c']</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_trim">
+<span class="sig-name descname"><span class="pre">str_trim</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_trim"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_trim" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_trim'"><span>#</span></a></dt>
+<dd><p>Remove whitespace from start and end of string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.strip()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Trimmed string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_trim</span><span class="p">(</span><span class="s2">"  hello  "</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hello'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_trim</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"  hello  "</span><span class="p">,</span> <span class="s2">" world "</span><span class="p">]))</span>
+</span><span id="line-4"><span class="go">0    hello</span>
+</span><span id="line-5"><span class="go">1    world</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_length">
+<span class="sig-name descname"><span class="pre">str_length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_length"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_length" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_length'"><span>#</span></a></dt>
+<dd><p>Get the length of a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.len()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Length of string(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_length</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">5</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_length</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]))</span>
+</span><span id="line-4"><span class="go">0    5</span>
+</span><span id="line-5"><span class="go">1    5</span>
+</span><span id="line-6"><span class="go">dtype: int64</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_sub">
+<span class="sig-name descname"><span class="pre">str_sub</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_sub"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_sub" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_sub'"><span>#</span></a></dt>
+<dd><p>Extract substring from string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>start</strong> (<em>int</em><em>, </em><em>optional</em>) – Start position (inclusive, 0-indexed). Defaults to 0.</p></li>
+<li><p><strong>end</strong> (<em>int</em><em>, </em><em>optional</em>) – End position (exclusive). Defaults to None (end of string).</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.slice()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Substring</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_sub</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hello'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_sub</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'world'</span>
+</span><span id="line-5"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_sub</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="line-6"><span class="go">0    el</span>
+</span><span id="line-7"><span class="go">1    or</span>
+</span><span id="line-8"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_count">
+<span class="sig-name descname"><span class="pre">str_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_count"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_count" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_count'"><span>#</span></a></dt>
+<dd><p>Count occurrences of a pattern in a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Regular expression pattern to count</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.count()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Count of pattern occurrences</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_count</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"l"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">3</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_count</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]),</span> <span class="s2">"o"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">0    1</span>
+</span><span id="line-5"><span class="go">1    1</span>
+</span><span id="line-6"><span class="go">dtype: int64</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_locate">
+<span class="sig-name descname"><span class="pre">str_locate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_locate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_locate" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_locate'"><span>#</span></a></dt>
+<dd><p>Find the first position of a pattern in a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Regular expression pattern to locate</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.find()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Position of first match (0-indexed) or -1 if not found</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>int</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_locate</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">4</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_locate</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]),</span> <span class="s2">"o"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">0    4</span>
+</span><span id="line-5"><span class="go">1    1</span>
+</span><span id="line-6"><span class="go">dtype: int64</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_locate_all">
+<span class="sig-name descname"><span class="pre">str_locate_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_locate_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_locate_all" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_locate_all'"><span>#</span></a></dt>
+<dd><p>Find all positions of a pattern in a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Regular expression pattern to locate</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of [start, end] positions for each match</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>list</em> or pd.Series of lists</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_locate_all</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"l"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">[[2, 3], [3, 4], [9, 10]]</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_locate_all</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">[[4, 5], [7, 8]]</span>
+</span><span id="line-5"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_locate_all</span><span class="p">(</span><span class="s2">"ababa"</span><span class="p">,</span> <span class="s2">"a"</span><span class="p">)</span>
+</span><span id="line-6"><span class="go">[[0, 1], [2, 3], [4, 5]]</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_pad">
+<span class="sig-name descname"><span class="pre">str_pad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'both'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pad</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'</span> <span class="pre">'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_pad"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_pad" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_pad'"><span>#</span></a></dt>
+<dd><p>Pad a string to a specified width.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>width</strong> (<em>int</em>) – Width to pad to</p></li>
+<li><p><strong>side</strong> (<em>str</em><em>, </em><em>optional</em>) – Side to pad. One of “left”, “right”, “both”. Defaults to “both”.</p></li>
+<li><p><strong>pad</strong> (<em>str</em><em>, </em><em>optional</em>) – Padding character. Defaults to “ “.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Padded string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_pad</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'  hello   '</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_pad</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'hello     '</span>
+</span><span id="line-5"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_pad</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="s2">"*"</span><span class="p">)</span>
+</span><span id="line-6"><span class="go">'*****hello'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_dup">
+<span class="sig-name descname"><span class="pre">str_dup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">times</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_dup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_dup" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_dup'"><span>#</span></a></dt>
+<dd><p>Duplicate strings.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>times</strong> (<em>int</em>) – Number of times to duplicate the string</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Duplicated string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_dup</span><span class="p">(</span><span class="s2">"abc"</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'abcabcabc'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_dup</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">]),</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">0    aaa</span>
+</span><span id="line-5"><span class="go">1    bbb</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_squish">
+<span class="sig-name descname"><span class="pre">str_squish</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_squish"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_squish" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_squish'"><span>#</span></a></dt>
+<dd><p>Trim whitespace from start and end, and replace all internal whitespace with a single space.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Squished string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_squish</span><span class="p">(</span><span class="s2">"  hello  world  "</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hello world'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_squish</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"  hello  world  "</span><span class="p">,</span> <span class="s2">" a  b  c "</span><span class="p">]))</span>
+</span><span id="line-4"><span class="go">0    hello world</span>
+</span><span id="line-5"><span class="go">1    a b c</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_wrap">
+<span class="sig-name descname"><span class="pre">str_wrap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">80</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">exdent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_wrap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_wrap" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_wrap'"><span>#</span></a></dt>
+<dd><p>Wrap text to a specified width.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>width</strong> (<em>int</em><em>, </em><em>optional</em>) – Width to wrap to. Defaults to 80.</p></li>
+<li><p><strong>indent</strong> (<em>int</em><em>, </em><em>optional</em>) – Indentation of first line. Defaults to 0.</p></li>
+<li><p><strong>exdent</strong> (<em>int</em><em>, </em><em>optional</em>) – Indentation of subsequent lines. Defaults to 0.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Wrapped string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_wrap</span><span class="p">(</span><span class="s2">"A very long string that needs to be wrapped"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'A very long string\nthat needs to be\nwrapped'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_to_title">
+<span class="sig-name descname"><span class="pre">str_to_title</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_to_title"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_to_title" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_to_title'"><span>#</span></a></dt>
+<dd><p>Convert string to title case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.title()
+remove_dashes (bool, optional): Remove dashes from string. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Title-cased string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_to_title</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'Hello World'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_to_title</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"python code"</span><span class="p">]))</span>
+</span><span id="line-4"><span class="go">0    Hello World</span>
+</span><span id="line-5"><span class="go">1    Python Code</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_to_upper">
+<span class="sig-name descname"><span class="pre">str_to_upper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_to_upper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_to_upper" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_to_upper'"><span>#</span></a></dt>
+<dd><p>Convert string to uppercase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.upper()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Uppercase string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_to_upper</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'HELLO'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_to_upper</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]))</span>
+</span><span id="line-4"><span class="go">0    HELLO</span>
+</span><span id="line-5"><span class="go">1    WORLD</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_to_lower">
+<span class="sig-name descname"><span class="pre">str_to_lower</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_to_lower"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_to_lower" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_to_lower'"><span>#</span></a></dt>
+<dd><p>Convert string to lowercase.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.lower()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Lowercase string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_to_lower</span><span class="p">(</span><span class="s2">"HELLO"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hello'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_to_lower</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"HELLO"</span><span class="p">,</span> <span class="s2">"WORLD"</span><span class="p">]))</span>
+</span><span id="line-4"><span class="go">0    hello</span>
+</span><span id="line-5"><span class="go">1    world</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_upper_cut">
+<span class="sig-name descname"><span class="pre">str_upper_cut</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_upper_cut"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_upper_cut" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_upper_cut'"><span>#</span></a></dt>
+<dd><p>Capitalize the first n characters of string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>**kwargs</strong> – Additional arguments
+n (int, optional): Number of characters to capitalize. Defaults to 1.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String with first n characters capitalized</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_upper_cut</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'Hello'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_upper_cut</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'HEllo'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_concat">
+<span class="sig-name descname"><span class="pre">str_concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_concat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_concat" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_concat'"><span>#</span></a></dt>
+<dd><p>Concatenate strings or Series with separator.</p>
+<p>This function can concatenate:
+1. Multiple strings into a single string
+2. Multiple pandas Series element-wise
+3. Multiple columns from a DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> – Strings or Series to concatenate
+- If first arg is DataFrame, remaining args are treated as column names
+- If all args are Series, concatenates row-wise
+- If all args are strings, joins with separator</p></li>
+<li><p><strong>sep</strong> (<em>str</em><em>, </em><em>optional</em>) – Separator to use between concatenated items. Defaults to ‘_’.</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Concatenated string(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – If args[0] is DataFrame but not all remaining args are valid column names</p></li>
+<li><p><strong>TypeError</strong> – If args are not all strings or all Series</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_concat</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hello_world'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_concat</span><span class="p">(</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"-"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'hello-world'</span>
+</span><span id="line-5"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_concat</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"a"</span><span class="p">,</span> <span class="s2">"b"</span><span class="p">]),</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"c"</span><span class="p">,</span> <span class="s2">"d"</span><span class="p">]))</span>
+</span><span id="line-6"><span class="go">0    a_c</span>
+</span><span id="line-7"><span class="go">1    b_d</span>
+</span><span id="line-8"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_search_apply">
+<span class="sig-name descname"><span class="pre">str_search_apply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_search_apply"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_search_apply" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_search_apply'"><span>#</span></a></dt>
+<dd><p>Apply a function to each regex match in string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Regular expression pattern to match</p></li>
+<li><p><strong>func</strong> (<em>callable</em>) – Function to apply to each match</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments passed to func</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String with function applied to each match</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_search_apply</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"\w+"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+</span><span id="line-2"><span class="go">'HELLO WORLD'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_search_apply</span><span class="p">(</span><span class="s2">"ab12cd34"</span><span class="p">,</span> <span class="s2">"\d+"</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+</span><span id="line-4"><span class="go">'ab24cd68'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_search_recase">
+<span class="sig-name descname"><span class="pre">str_search_recase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_search_recase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_search_recase" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_search_recase'"><span>#</span></a></dt>
+<dd><p>Change the case of text matching a pattern in string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Regular expression pattern to match</p></li>
+<li><p><strong>case</strong> (<em>str</em>) – Case transformation to apply. One of:
+- ‘lower’: Convert to lowercase
+- ‘upper’: Convert to uppercase
+- ‘title’: Convert to title case
+- ‘snakecase’: Convert to snake_case
+- ‘camelcase’: Convert to CamelCase</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String with case transformation applied to matches</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>NotImplementedError</strong> – If case is not one of the supported options</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_search_recase</span><span class="p">(</span><span class="s2">"hello WORLD"</span><span class="p">,</span> <span class="s2">"\w+"</span><span class="p">,</span> <span class="s2">"upper"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'HELLO WORLD'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_search_recase</span><span class="p">(</span><span class="s2">"helloWorld"</span><span class="p">,</span> <span class="s2">"\w+"</span><span class="p">,</span> <span class="s2">"snakecase"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'hello_world'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_dash_to_space">
+<span class="sig-name descname"><span class="pre">str_dash_to_space</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dashes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['-',</span> <span class="pre">'_']</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_dash_to_space"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_dash_to_space" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_dash_to_space'"><span>#</span></a></dt>
+<dd><p>Replace all occurrences of specified dashes with spaces.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em> or </em><em>pd.Series</em>) – Input string or pandas Series</p></li>
+<li><p><strong>dashes</strong> (<em>list</em><em>, </em><em>optional</em>) – List of dashes to replace. Defaults to [“-”, “_”].</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for str_replace()
+n (int, optional): Number of replacements to make. Defaults to None (all occurrences).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>String with dashes replaced by spaces</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em> or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_dash_to_space</span><span class="p">(</span><span class="s2">"hello-world"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hello world'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_dash_to_space</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello-world"</span><span class="p">,</span> <span class="s2">"hello_world"</span><span class="p">]))</span>
+</span><span id="line-4"><span class="go">0    hello world</span>
+</span><span id="line-5"><span class="go">1    hello world</span>
+</span><span id="line-6"><span class="go">dtype: object</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_startswith">
+<span class="sig-name descname"><span class="pre">str_startswith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_startswith"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_startswith" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_startswith'"><span>#</span></a></dt>
+<dd><p>Check if string starts with pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Pattern to check</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.startswith()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if string starts with pattern, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>bool</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_startswith</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"hello"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">True</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_startswith</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]),</span> <span class="s2">"w"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">0    False</span>
+</span><span id="line-5"><span class="go">1     True</span>
+</span><span id="line-6"><span class="go">dtype: bool</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.str_endswith">
+<span class="sig-name descname"><span class="pre">str_endswith</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_endswith"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_endswith" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_endswith'"><span>#</span></a></dt>
+<dd><p>Check if string ends with pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Input string or collection</p></li>
+<li><p><strong>pattern</strong> (<em>str</em>) – Pattern to check</p></li>
+<li><p><strong>**kwargs</strong> – Additional keyword arguments for pandas str.endswith()</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if string ends with pattern, False otherwise</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>bool</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_endswith</span><span class="p">(</span><span class="s2">"hello world"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">True</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">str_endswith</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">"hello"</span><span class="p">,</span> <span class="s2">"world"</span><span class="p">]),</span> <span class="s2">"o"</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">0     True</span>
+</span><span id="line-5"><span class="go">1    False</span>
+</span><span id="line-6"><span class="go">dtype: bool</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.camel_to_snake">
+<span class="sig-name descname"><span class="pre">camel_to_snake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#camel_to_snake"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.camel_to_snake" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.camel_to_snake'"><span>#</span></a></dt>
+<dd><p>Convert camel case string to snake case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Camel case string or collection</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Snake case string or collection</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">camel_to_snake</span><span class="p">(</span><span class="s2">"camelCase"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'camel_case'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">camel_to_snake</span><span class="p">([</span><span class="s2">"helloWorld"</span><span class="p">,</span> <span class="s2">"pythonTest"</span><span class="p">])</span>
+</span><span id="line-4"><span class="go">['hello_world', 'python_test']</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.snake_to_camel">
+<span class="sig-name descname"><span class="pre">snake_to_camel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#snake_to_camel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.snake_to_camel" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.snake_to_camel'"><span>#</span></a></dt>
+<dd><p>Convert snake case string to camel case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Snake case string or collection</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Camel case string or collection</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">snake_to_camel</span><span class="p">(</span><span class="s2">"snake_case"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'SnakeCase'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">snake_to_camel</span><span class="p">([</span><span class="s2">"hello_world"</span><span class="p">,</span> <span class="s2">"python_test"</span><span class="p">])</span>
+</span><span id="line-4"><span class="go">['HelloWorld', 'PythonTest']</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+</section>
+</div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
+<div class="sticky top-16 -mt-10 max-h-[calc(100vh-5rem)] overflow-y-auto pt-6 space-y-2"><p class="font-medium">On this page</p>
+<ul>
+<li><a :data-current="activeSection === '#tidystring.str_replace'" class="reference internal" href="#tidystring.str_replace"><code class="docutils literal notranslate"><span class="pre">str_replace()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_detect'" class="reference internal" href="#tidystring.str_detect"><code class="docutils literal notranslate"><span class="pre">str_detect()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_remove'" class="reference internal" href="#tidystring.str_remove"><code class="docutils literal notranslate"><span class="pre">str_remove()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_extract'" class="reference internal" href="#tidystring.str_extract"><code class="docutils literal notranslate"><span class="pre">str_extract()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_split'" class="reference internal" href="#tidystring.str_split"><code class="docutils literal notranslate"><span class="pre">str_split()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_trim'" class="reference internal" href="#tidystring.str_trim"><code class="docutils literal notranslate"><span class="pre">str_trim()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_length'" class="reference internal" href="#tidystring.str_length"><code class="docutils literal notranslate"><span class="pre">str_length()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_sub'" class="reference internal" href="#tidystring.str_sub"><code class="docutils literal notranslate"><span class="pre">str_sub()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_count'" class="reference internal" href="#tidystring.str_count"><code class="docutils literal notranslate"><span class="pre">str_count()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_locate'" class="reference internal" href="#tidystring.str_locate"><code class="docutils literal notranslate"><span class="pre">str_locate()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_locate_all'" class="reference internal" href="#tidystring.str_locate_all"><code class="docutils literal notranslate"><span class="pre">str_locate_all()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_pad'" class="reference internal" href="#tidystring.str_pad"><code class="docutils literal notranslate"><span class="pre">str_pad()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_dup'" class="reference internal" href="#tidystring.str_dup"><code class="docutils literal notranslate"><span class="pre">str_dup()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_squish'" class="reference internal" href="#tidystring.str_squish"><code class="docutils literal notranslate"><span class="pre">str_squish()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_wrap'" class="reference internal" href="#tidystring.str_wrap"><code class="docutils literal notranslate"><span class="pre">str_wrap()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_to_title'" class="reference internal" href="#tidystring.str_to_title"><code class="docutils literal notranslate"><span class="pre">str_to_title()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_to_upper'" class="reference internal" href="#tidystring.str_to_upper"><code class="docutils literal notranslate"><span class="pre">str_to_upper()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_to_lower'" class="reference internal" href="#tidystring.str_to_lower"><code class="docutils literal notranslate"><span class="pre">str_to_lower()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_upper_cut'" class="reference internal" href="#tidystring.str_upper_cut"><code class="docutils literal notranslate"><span class="pre">str_upper_cut()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_concat'" class="reference internal" href="#tidystring.str_concat"><code class="docutils literal notranslate"><span class="pre">str_concat()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_search_apply'" class="reference internal" href="#tidystring.str_search_apply"><code class="docutils literal notranslate"><span class="pre">str_search_apply()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_search_recase'" class="reference internal" href="#tidystring.str_search_recase"><code class="docutils literal notranslate"><span class="pre">str_search_recase()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_dash_to_space'" class="reference internal" href="#tidystring.str_dash_to_space"><code class="docutils literal notranslate"><span class="pre">str_dash_to_space()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_startswith'" class="reference internal" href="#tidystring.str_startswith"><code class="docutils literal notranslate"><span class="pre">str_startswith()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.str_endswith'" class="reference internal" href="#tidystring.str_endswith"><code class="docutils literal notranslate"><span class="pre">str_endswith()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.camel_to_snake'" class="reference internal" href="#tidystring.camel_to_snake"><code class="docutils literal notranslate"><span class="pre">camel_to_snake()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.snake_to_camel'" class="reference internal" href="#tidystring.snake_to_camel"><code class="docutils literal notranslate"><span class="pre">snake_to_camel()</span></code></a></li>
+</ul>
+</div>
+</aside>
+</main>
+</div>
+</div><footer class="py-6 border-t border-border md:py-0">
+<div class="container flex flex-col items-center justify-between gap-4 md:h-24 md:flex-row">
+<div class="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+<p class="text-sm leading-loose text-center text-muted-foreground md:text-left">© 2025, Colin Conwell Built with <a class="font-medium underline underline-offset-4" href="https://www.sphinx-doc.org" rel="noreferrer">Sphinx 8.1.3</a></p>
+</div>
+</div>
+</footer>
+</div>
+<script src="_static/documentation_options.js?v=01f34227"></script>
+<script src="_static/doctools.js?v=9bcbadda"></script>
+<script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+<script defer="defer" src="_static/theme.js?v=073f68d9"></script>
+<script src="_static/custom.js?v=e0ccfea7"></script>
+</body>
+</html>
