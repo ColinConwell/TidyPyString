@@ -33,8 +33,9 @@ from .methods import (
 from .cheatsheet import (
     get_tidystring_cheatsheet,
     get_regex_cheatsheet,
+    get_input_types_cheatsheet,
     print_cheatsheet,
-    get_all_functions
+    get_all_functions,
 )
 
 from .regex_utils import (
@@ -104,6 +105,7 @@ __all__ = [
     "print_cheatsheet",
     "get_tidystring_cheatsheet",
     "get_regex_cheatsheet",
+    "get_input_types_cheatsheet",
     # Regex utility functions
     "re_literal",
     "re_or",

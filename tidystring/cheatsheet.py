@@ -8,197 +8,189 @@ for various aspects of the tidystring package.
 import pandas as pd
 
 
-def get_basic_cheatsheet():
+def get_tidystring_cheatsheet(group=None):
     """
-    Returns a DataFrame containing common string operations.
+    Returns a comprehensive DataFrame containing tidystring functions.
+
+    Args:
+        group (str, optional): Filter by function group. Options:
+            'basic', 'case', 'detection', 'extraction', 'modification', 'regex', 'input_types'.
+            If None, returns all tidystring functions. Defaults to None.
 
     Returns:
-        pd.DataFrame: A DataFrame with function names, descriptions, and examples
+        pd.DataFrame: A DataFrame with function names, descriptions, examples, and groups
     """
+    # Define all cheatsheet data with group info
     data = {
-        "Function": [
-            "str_length",
-            "str_detect",
-            "str_extract",
-            "str_replace",
-            "str_remove",
-            "str_trim",
-            "str_to_upper",
-            "str_to_lower",
-            "str_to_title",
-            "str_split",
-            "str_sub",
-            "str_count",
-        ],
-        "Description": [
-            "Get the length of a string",
-            "Detect if a pattern exists in a string",
-            "Extract the first match of a pattern",
-            "Replace all matches of a pattern",
-            "Remove all matches of a pattern",
-            "Remove whitespace from start and end",
-            "Convert to uppercase",
-            "Convert to lowercase",
-            "Convert to title case",
-            "Split string by pattern",
-            "Extract substring from start/end positions",
-            "Count occurrences of a pattern",
-        ],
-        "Example": [
-            "str_length('hello') -> 5",
-            "str_detect('hello world', 'o') -> True",
-            "str_extract('hello world', 'h(\\w+)') -> 'ello'",
-            "str_replace('hello', 'l', 'X') -> 'heXXo'",
-            "str_remove('hello', 'l') -> 'heo'",
-            "str_trim('  hello  ') -> 'hello'",
-            "str_to_upper('hello') -> 'HELLO'",
-            "str_to_lower('HELLO') -> 'hello'",
-            "str_to_title('hello world') -> 'Hello World'",
-            "str_split('a,b,c', ',') -> ['a', 'b', 'c']",
-            "str_sub('hello', 1, 3) -> 'el'",
-            "str_count('hello', 'l') -> 2",
-        ],
+        # Basic functions
+        "str_length": {
+            "Description": "Get the length of a string",
+            "Example": "str_length('hello') -> 5",
+            "Group": "basic",
+        },
+        "str_detect": {
+            "Description": "Detect if a pattern exists in a string",
+            "Example": "str_detect('hello world', 'o') -> True",
+            "Group": "detection",
+        },
+        "str_extract": {
+            "Description": "Extract the first match of a pattern",
+            "Example": "str_extract('hello world', 'h(\\w+)') -> 'ello'",
+            "Group": "extraction",
+        },
+        "str_replace": {
+            "Description": "Replace all matches of a pattern",
+            "Example": "str_replace('hello', 'l', 'X') -> 'heXXo'",
+            "Group": "modification",
+        },
+        "str_remove": {
+            "Description": "Remove all matches of a pattern",
+            "Example": "str_remove('hello', 'l') -> 'heo'",
+            "Group": "modification",
+        },
+        "str_trim": {
+            "Description": "Remove whitespace from start and end",
+            "Example": "str_trim('  hello  ') -> 'hello'",
+            "Group": "modification",
+        },
+        "str_to_upper": {
+            "Description": "Convert to uppercase",
+            "Example": "str_to_upper('hello') -> 'HELLO'",
+            "Group": "case",
+        },
+        "str_to_lower": {
+            "Description": "Convert to lowercase",
+            "Example": "str_to_lower('HELLO') -> 'hello'",
+            "Group": "case",
+        },
+        "str_to_title": {
+            "Description": "Convert to title case",
+            "Example": "str_to_title('hello world') -> 'Hello World'",
+            "Group": "case",
+        },
+        "str_split": {
+            "Description": "Split string by pattern",
+            "Example": "str_split('a,b,c', ',') -> ['a', 'b', 'c']",
+            "Group": "extraction",
+        },
+        "str_sub": {
+            "Description": "Extract substring from start/end positions",
+            "Example": "str_sub('hello', 1, 3) -> 'el'",
+            "Group": "extraction",
+        },
+        "str_count": {
+            "Description": "Count occurrences of a pattern",
+            "Example": "str_count('hello', 'l') -> 2",
+            "Group": "detection",
+        },
+        "str_upper_cut": {
+            "Description": "Capitalize first n characters",
+            "Example": "str_upper_cut('hello', n=2) -> 'HEllo'",
+            "Group": "case",
+        },
+        "camel_to_snake": {
+            "Description": "Convert camelCase to snake_case",
+            "Example": "camel_to_snake('helloWorld') -> 'hello_world'",
+            "Group": "case",
+        },
+        "snake_to_camel": {
+            "Description": "Convert snake_case to CamelCase",
+            "Example": "snake_to_camel('hello_world') -> 'HelloWorld'",
+            "Group": "case",
+        },
+        "str_search_recase": {
+            "Description": "Change case of matched pattern",
+            "Example": "str_search_recase('helloWorld', '\\w+', 'snakecase') -> 'hello_world'",
+            "Group": "case",
+        },
+        "str_startswith": {
+            "Description": "Check if string starts with a pattern",
+            "Example": "str_startswith('hello', 'he') -> True",
+            "Group": "detection",
+        },
+        "str_endswith": {
+            "Description": "Check if string ends with a pattern",
+            "Example": "str_endswith('hello', 'lo') -> True",
+            "Group": "detection",
+        },
+        "str_locate": {
+            "Description": "Find position of first match",
+            "Example": "str_locate('hello', 'l') -> 2",
+            "Group": "detection",
+        },
+        "str_locate_all": {
+            "Description": "Find positions of all matches",
+            "Example": "str_locate_all('hello', 'l') -> [[2, 3], [3, 4]]",
+            "Group": "detection",
+        },
+        "str_pad": {
+            "Description": "Pad a string to a specified width",
+            "Example": "str_pad('hello', 10, side='both') -> '  hello   '",
+            "Group": "modification",
+        },
+        "str_squish": {
+            "Description": "Trim and replace internal whitespace",
+            "Example": "str_squish('  hello    world  ') -> 'hello world'",
+            "Group": "modification",
+        },
+        "str_dup": {
+            "Description": "Duplicate a string n times",
+            "Example": "str_dup('abc', 2) -> 'abcabc'",
+            "Group": "modification",
+        },
+        "str_wrap": {
+            "Description": "Wrap text to specified width",
+            "Example": "str_wrap('long text...', width=20)",
+            "Group": "modification",
+        },
+        "str_concat": {
+            "Description": "Concatenate strings with separator",
+            "Example": "str_concat('hello', 'world', sep='-') -> 'hello-world'",
+            "Group": "modification",
+        },
+        "str_dash_to_space": {
+            "Description": "Replace dashes with spaces",
+            "Example": "str_dash_to_space('hello-world') -> 'hello world'",
+            "Group": "modification",
+        },
+        "str_search_apply": {
+            "Description": "Apply a function to each regex match",
+            "Example": "str_search_apply('ab12', '\\d+', lambda x: str(int(x)*2)) -> 'ab24'",
+            "Group": "modification",
+        },
     }
-    return pd.DataFrame(data)
 
+    # Create DataFrame from the data
+    functions = []
+    descriptions = []
+    examples = []
+    groups = []
 
-def get_case_cheatsheet():
-    """
-    Returns a DataFrame containing case conversion operations.
+    for func, details in data.items():
+        functions.append(func)
+        descriptions.append(details["Description"])
+        examples.append(details["Example"])
+        groups.append(details["Group"])
 
-    Returns:
-        pd.DataFrame: A DataFrame with function names, descriptions, and examples
-    """
-    data = {
-        "Function": [
-            "str_to_upper",
-            "str_to_lower",
-            "str_to_title",
-            "str_upper_cut",
-            "camel_to_snake",
-            "snake_to_camel",
-            "str_search_recase",
-        ],
-        "Description": [
-            "Convert to uppercase",
-            "Convert to lowercase",
-            "Convert to title case",
-            "Capitalize first n characters",
-            "Convert camelCase to snake_case",
-            "Convert snake_case to CamelCase",
-            "Change case of matched pattern",
-        ],
-        "Example": [
-            "str_to_upper('hello') -> 'HELLO'",
-            "str_to_lower('HELLO') -> 'hello'",
-            "str_to_title('hello world') -> 'Hello World'",
-            "str_upper_cut('hello', n=2) -> 'HEllo'",
-            "camel_to_snake('helloWorld') -> 'hello_world'",
-            "snake_to_camel('hello_world') -> 'HelloWorld'",
-            "str_search_recase('helloWorld', '\\w+', 'snakecase') -> 'hello_world'",
-        ],
-    }
-    return pd.DataFrame(data)
+    df = pd.DataFrame({"Function": functions, "Description": descriptions, "Example": examples, "Group": groups})
 
+    # Filter by group if specified
+    if group is not None:
+        # Special handling for 'regex' and 'input_types' groups
+        if group.lower() == "regex":
+            return get_regex_cheatsheet()
+        elif group.lower() == "input_types":
+            return get_input_types_cheatsheet()
 
-def get_detection_cheatsheet():
-    """
-    Returns a DataFrame containing pattern detection operations.
+        if group.lower() not in set(df["Group"]):
+            valid_groups = ", ".join(sorted(set(df["Group"])) + ["regex", "input_types"])
+            raise ValueError(f"Invalid group: '{group}'. Valid options are: {valid_groups}")
+        df = df[df["Group"] == group.lower()]
 
-    Returns:
-        pd.DataFrame: A DataFrame with function names, descriptions, and examples
-    """
-    data = {
-        "Function": ["str_detect", "str_startswith", "str_endswith", "str_count", "str_locate", "str_locate_all"],
-        "Description": [
-            "Detect if a pattern exists in a string",
-            "Check if string starts with a pattern",
-            "Check if string ends with a pattern",
-            "Count occurrences of a pattern",
-            "Find position of first match",
-            "Find positions of all matches",
-        ],
-        "Example": [
-            "str_detect('hello world', 'o') -> True",
-            "str_startswith('hello', 'he') -> True",
-            "str_endswith('hello', 'lo') -> True",
-            "str_count('hello', 'l') -> 2",
-            "str_locate('hello', 'l') -> 2",
-            "str_locate_all('hello', 'l') -> [[2, 3], [3, 4]]",
-        ],
-    }
-    return pd.DataFrame(data)
+    # Sort alphabetically by function name
+    df = df.sort_values("Function").reset_index(drop=True)
 
-
-def get_extraction_cheatsheet():
-    """
-    Returns a DataFrame containing pattern extraction operations.
-
-    Returns:
-        pd.DataFrame: A DataFrame with function names, descriptions, and examples
-    """
-    data = {
-        "Function": ["str_extract", "str_sub", "str_split"],
-        "Description": [
-            "Extract first match of a pattern",
-            "Extract substring from start/end positions",
-            "Split string by pattern into components",
-        ],
-        "Example": [
-            "str_extract('hello world', 'h(\\w+)') -> 'ello'",
-            "str_sub('hello', 1, 3) -> 'el'",
-            "str_split('a,b,c', ',') -> ['a', 'b', 'c']",
-        ],
-    }
-    return pd.DataFrame(data)
-
-
-def get_modification_cheatsheet():
-    """
-    Returns a DataFrame containing string modification operations.
-
-    Returns:
-        pd.DataFrame: A DataFrame with function names, descriptions, and examples
-    """
-    data = {
-        "Function": [
-            "str_replace",
-            "str_remove",
-            "str_trim",
-            "str_pad",
-            "str_squish",
-            "str_dup",
-            "str_wrap",
-            "str_concat",
-            "str_dash_to_space",
-            "str_search_apply",
-        ],
-        "Description": [
-            "Replace all matches of a pattern",
-            "Remove all matches of a pattern",
-            "Remove whitespace from start and end",
-            "Pad a string to a specified width",
-            "Trim and replace internal whitespace",
-            "Duplicate a string n times",
-            "Wrap text to specified width",
-            "Concatenate strings with separator",
-            "Replace dashes with spaces",
-            "Apply a function to each regex match",
-        ],
-        "Example": [
-            "str_replace('hello', 'l', 'X') -> 'heXXo'",
-            "str_remove('hello', 'l') -> 'heo'",
-            "str_trim('  hello  ') -> 'hello'",
-            "str_pad('hello', 10, side='both') -> '  hello   '",
-            "str_squish('  hello    world  ') -> 'hello world'",
-            "str_dup('abc', 2) -> 'abcabc'",
-            "str_wrap('long text...', width=20)",
-            "str_concat('hello', 'world', sep='-') -> 'hello-world'",
-            "str_dash_to_space('hello-world') -> 'hello world'",
-            "str_search_apply('ab12', '\\d+', lambda x: str(int(x)*2)) -> 'ab24'",
-        ],
-    }
-    return pd.DataFrame(data)
+    return df
 
 
 def get_regex_cheatsheet():
@@ -293,6 +285,18 @@ def get_input_types_cheatsheet():
     return pd.DataFrame(data)
 
 
+def get_all_functions():
+    """
+    Returns a list of all string manipulation functions in tidystring.
+
+    Returns:
+        list: A list of all function names
+    """
+    # Get all functions from the main cheatsheet
+    df = get_tidystring_cheatsheet()
+    return df["Function"].tolist()
+
+
 def print_cheatsheet(df):
     """
     Pretty-print a cheatsheet DataFrame.
@@ -305,75 +309,3 @@ def print_cheatsheet(df):
         "display.max_rows", None, "display.max_columns", None, "display.width", 1000, "display.expand_frame_repr", False
     ):
         print(df)
-
-def get_all_functions():
-    """
-    Returns a list of all string manipulation functions in tidystring.
-
-    Returns:
-        list: A list of all function names
-    """
-    functions = [
-        # Basic string functions
-        "str_length",
-        "str_detect",
-        "str_extract",
-        "str_replace",
-        "str_remove",
-        "str_trim",
-        # Case conversion
-        "str_to_upper",
-        "str_to_lower",
-        "str_to_title",
-        "str_upper_cut",
-        "camel_to_snake",
-        "snake_to_camel",
-        "str_search_recase",
-        # Detection functions
-        "str_startswith",
-        "str_endswith",
-        "str_count",
-        "str_locate",
-        "str_locate_all",
-        # Extraction functions
-        "str_sub",
-        "str_split",
-        # Modification functions
-        "str_pad",
-        "str_squish",
-        "str_dup",
-        "str_wrap",
-        "str_concat",
-        "str_dash_to_space",
-        "str_search_apply",
-    ]
-    
-    return functions
-
-
-def get_tidystring_cheatsheet():
-    """
-    Returns a comprehensive DataFrame containing all tidystring functions.
-
-    This combines all the individual cheatsheets into a single reference table.
-
-    Returns:
-        pd.DataFrame: A DataFrame with all function names, descriptions, and examples
-    """
-    # Get all individual cheatsheets
-    basic = get_basic_cheatsheet()
-    case = get_case_cheatsheet()
-    detection = get_detection_cheatsheet()
-    extraction = get_extraction_cheatsheet()
-    modification = get_modification_cheatsheet()
-
-    # Combine all dataframes
-    combined = pd.concat([basic, case, detection, extraction, modification])
-
-    # Remove duplicates (some functions appear in multiple cheatsheets)
-    combined = combined.drop_duplicates(subset=["Function"])
-
-    # Sort alphabetically by function name
-    combined = combined.sort_values("Function").reset_index(drop=True)
-
-    return combined

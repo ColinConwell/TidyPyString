@@ -4,58 +4,7 @@ import numpy as np
 
 from .handlers import _series_intake, _string_intake, _string_output
 
-# String Re-Case -------------------------------
-
-
-def camel_to_snake(string):
-    """Convert camel case string to snake case.
-
-    Args:
-        string (str, list, or pd.Series): Camel case string or collection
-
-    Returns:
-        str, list, or pd.Series: Snake case string or collection
-
-    Examples:
-        >>> camel_to_snake("camelCase")
-        'camel_case'
-        >>> camel_to_snake(["helloWorld", "pythonTest"])
-        ['hello_world', 'python_test']
-    """
-    string, str_type = _series_intake(string)
-
-    def convert(s):
-        return re.sub(r"(?<!^)(?=[A-Z])", "_", s).lower()
-
-    result = string.apply(convert)
-    return _string_output(result, str_type)
-
-
-def snake_to_camel(string):
-    """Convert snake case string to camel case.
-
-    Args:
-        string (str, list, or pd.Series): Snake case string or collection
-
-    Returns:
-        str, list, or pd.Series: Camel case string or collection
-
-    Examples:
-        >>> snake_to_camel("snake_case")
-        'SnakeCase'
-        >>> snake_to_camel(["hello_world", "python_test"])
-        ['HelloWorld', 'PythonTest']
-    """
-    string, str_type = _series_intake(string)
-
-    def convert(s):
-        return "".join(x.capitalize() or "_" for x in s.split("_"))
-
-    result = string.apply(convert)
-    return _string_output(result, str_type)
-
-
-# stringr-Style --------------------------------
+# stringr-Style ----------------------------------------------------
 
 
 def str_detect(string, pattern, **kwargs):
@@ -804,6 +753,54 @@ def str_dash_to_space(string, dashes=["-", "_"], **kwargs):
 
 
 # search + replace methods ----------------------------------
+
+
+def camel_to_snake(string):
+    """Convert camel case string to snake case.
+
+    Args:
+        string (str, list, or pd.Series): Camel case string or collection
+
+    Returns:
+        str, list, or pd.Series: Snake case string or collection
+
+    Examples:
+        >>> camel_to_snake("camelCase")
+        'camel_case'
+        >>> camel_to_snake(["helloWorld", "pythonTest"])
+        ['hello_world', 'python_test']
+    """
+    string, str_type = _series_intake(string)
+
+    def convert(s):
+        return re.sub(r"(?<!^)(?=[A-Z])", "_", s).lower()
+
+    result = string.apply(convert)
+    return _string_output(result, str_type)
+
+
+def snake_to_camel(string):
+    """Convert snake case string to camel case.
+
+    Args:
+        string (str, list, or pd.Series): Snake case string or collection
+
+    Returns:
+        str, list, or pd.Series: Camel case string or collection
+
+    Examples:
+        >>> snake_to_camel("snake_case")
+        'SnakeCase'
+        >>> snake_to_camel(["hello_world", "python_test"])
+        ['HelloWorld', 'PythonTest']
+    """
+    string, str_type = _series_intake(string)
+
+    def convert(s):
+        return "".join(x.capitalize() or "_" for x in s.split("_"))
+
+    result = string.apply(convert)
+    return _string_output(result, str_type)
 
 
 def str_search_apply(string, pattern, func, **kwargs):
