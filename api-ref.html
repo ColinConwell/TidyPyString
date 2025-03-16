@@ -106,11 +106,10 @@
 <nav class="contents local" id="table-of-contents">
 <p class="topic-title">Table of Contents</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#core-functions" id="id1">Core Functions</a></p>
-<ul>
-<li><p><a class="reference internal" href="#the-cheatsheets" id="id2">The Cheatsheets</a></p></li>
-</ul>
-</li>
+<li><p><a class="reference internal" href="#core-functions" id="id1">Core Functions</a></p></li>
+<li><p><a class="reference internal" href="#regex-helpers" id="id2">Regex Helpers</a></p></li>
+<li><p><a class="reference internal" href="#cheatsheets" id="id3">Cheatsheets</a></p></li>
+<li><p><a class="reference internal" href="#miscellaneous" id="id4">Miscellaneous</a></p></li>
 </ul>
 </nav>
 <section id="core-functions">
@@ -722,52 +721,6 @@ n (int, optional): Number of characters to capitalize. Defaults to 1.</p></li>
 </div>
 </dd></dl>
 <dl class="py function">
-<dt class="sig sig-object py" id="tidystring.camel_to_snake">
-<span class="sig-name descname"><span class="pre">camel_to_snake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#camel_to_snake"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.camel_to_snake" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.camel_to_snake'"><span>#</span></a></dt>
-<dd><p>Convert camel case string to snake case.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Camel case string or collection</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Snake case string or collection</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">camel_to_snake</span><span class="p">(</span><span class="s2">"camelCase"</span><span class="p">)</span>
-</span><span id="line-2"><span class="go">'camel_case'</span>
-</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">camel_to_snake</span><span class="p">([</span><span class="s2">"helloWorld"</span><span class="p">,</span> <span class="s2">"pythonTest"</span><span class="p">])</span>
-</span><span id="line-4"><span class="go">['hello_world', 'python_test']</span>
-</span></code></pre></div>
-</div>
-</dd></dl>
-<dl class="py function">
-<dt class="sig sig-object py" id="tidystring.snake_to_camel">
-<span class="sig-name descname"><span class="pre">snake_to_camel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#snake_to_camel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.snake_to_camel" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.snake_to_camel'"><span>#</span></a></dt>
-<dd><p>Convert snake case string to camel case.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Snake case string or collection</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>Camel case string or collection</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
-</dd>
-</dl>
-<p class="rubric">Examples</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">snake_to_camel</span><span class="p">(</span><span class="s2">"snake_case"</span><span class="p">)</span>
-</span><span id="line-2"><span class="go">'SnakeCase'</span>
-</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">snake_to_camel</span><span class="p">([</span><span class="s2">"hello_world"</span><span class="p">,</span> <span class="s2">"python_test"</span><span class="p">])</span>
-</span><span id="line-4"><span class="go">['HelloWorld', 'PythonTest']</span>
-</span></code></pre></div>
-</div>
-</dd></dl>
-<dl class="py function">
 <dt class="sig sig-object py" id="tidystring.str_concat">
 <span class="sig-name descname"><span class="pre">str_concat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'_'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#str_concat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.str_concat" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.str_concat'"><span>#</span></a></dt>
 <dd><p>Concatenate strings or Series with separator.</p>
@@ -904,8 +857,630 @@ n (int, optional): Number of replacements to make. Defaults to None (all occurre
 </span></code></pre></div>
 </div>
 </dd></dl>
-<section id="the-cheatsheets">
-<h3><a class="toc-backref" href="#id2" role="doc-backlink">The Cheatsheets</a><a class="headerlink" href="#the-cheatsheets" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#the-cheatsheets'"><span>#</span></a></h3>
+</section>
+<section id="regex-helpers">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Regex Helpers</a><a class="headerlink" href="#regex-helpers" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#regex-helpers'"><span>#</span></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_literal">
+<span class="sig-name descname"><span class="pre">re_literal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_literal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_literal" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_literal'"><span>#</span></a></dt>
+<dd><p>Escape a string to be used as a literal in a regular expression.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>text</strong> (<em>str</em>) – The text to escape</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The escaped string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_literal</span><span class="p">(</span><span class="s1">'hello.world'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'hello\.world'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_literal</span><span class="p">(</span><span class="s1">'a+b*c?'</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'a\+b\*c\?'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_or">
+<span class="sig-name descname"><span class="pre">re_or</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">patterns</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_or"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_or" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_or'"><span>#</span></a></dt>
+<dd><p>Combine multiple patterns with OR logic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*patterns</strong> – Variable number of patterns to combine</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern that matches any of the input patterns</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_or</span><span class="p">(</span><span class="s1">'cat'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'bird'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'cat|dog|bird'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_or</span><span class="p">(</span><span class="s1">'\d+'</span><span class="p">,</span> <span class="s1">'[A-Z]+'</span><span class="p">,</span> <span class="s1">'\w</span><span class="si">{3}</span><span class="s1">'</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'\d+|[A-Z]+|\w{3}'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_either">
+<span class="sig-name descname"><span class="pre">re_either</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">left</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">right</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_either"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_either" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_either'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching either the left or right pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>left</strong> (<em>str</em>) – The left pattern</p></li>
+<li><p><strong>right</strong> (<em>str</em>) – The right pattern</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern that matches either left or right</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_either</span><span class="p">(</span><span class="s1">'cat'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'cat|dog'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_not_chars">
+<span class="sig-name descname"><span class="pre">re_not_chars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_not_chars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_not_chars" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_not_chars'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching any character not in the given set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>chars</strong> (<em>str</em>) – Characters to exclude</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching any character not in chars</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_not_chars</span><span class="p">(</span><span class="s1">'aeiou'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'[^aeiou]'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_chars">
+<span class="sig-name descname"><span class="pre">re_chars</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chars</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_chars"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_chars" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_chars'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching any character in the given set.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>chars</strong> (<em>str</em>) – Characters to include</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching any character in chars</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_chars</span><span class="p">(</span><span class="s1">'aeiou'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'[aeiou]'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_digit">
+<span class="sig-name descname"><span class="pre">re_digit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_digit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_digit" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_digit'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching any digit character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching any digit</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_digit</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'\d'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_word">
+<span class="sig-name descname"><span class="pre">re_word</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_word"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_word" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_word'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching any word character (letter, digit, underscore).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching any word character</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_word</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'\w'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_space">
+<span class="sig-name descname"><span class="pre">re_space</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_space"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_space" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_space'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching any whitespace character.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching any whitespace character</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_space</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'\s'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_any">
+<span class="sig-name descname"><span class="pre">re_any</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_any"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_any" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_any'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching any character except newline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching any character</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_any</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'.'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_start">
+<span class="sig-name descname"><span class="pre">re_start</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_start" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_start'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching the start of a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching start of string</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_start</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'^'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_end">
+<span class="sig-name descname"><span class="pre">re_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_end" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_end'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching the end of a string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching end of string</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_end</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'$'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_boundary">
+<span class="sig-name descname"><span class="pre">re_boundary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_boundary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_boundary" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_boundary'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching a word boundary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching a word boundary</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_boundary</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'\b'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_zero_or_more">
+<span class="sig-name descname"><span class="pre">re_zero_or_more</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_zero_or_more"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_zero_or_more" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_zero_or_more'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching zero or more occurrences of the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching zero or more occurrences</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_zero_or_more</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'a*'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_zero_or_more</span><span class="p">(</span><span class="s1">'[abc]'</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'[abc]*'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_one_or_more">
+<span class="sig-name descname"><span class="pre">re_one_or_more</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_one_or_more"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_one_or_more" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_one_or_more'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching one or more occurrences of the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching one or more occurrences</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_one_or_more</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'a+'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_one_or_more</span><span class="p">(</span><span class="s1">'[abc]'</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'[abc]+'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_optional">
+<span class="sig-name descname"><span class="pre">re_optional</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_optional"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_optional" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_optional'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching zero or one occurrence of the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching zero or one occurrence</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_optional</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'a?'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_optional</span><span class="p">(</span><span class="s1">'[abc]'</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'[abc]?'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_repeat">
+<span class="sig-name descname"><span class="pre">re_repeat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_repeat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_repeat" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_repeat'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching exactly n occurrences of the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pattern</strong> (<em>str</em>) – The pattern</p></li>
+<li><p><strong>n</strong> (<em>int</em>) – Number of repetitions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching exactly n occurrences</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_repeat</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'a{3}'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_repeat</span><span class="p">(</span><span class="s1">'[abc]'</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'[abc]{5}'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_repeat_range">
+<span class="sig-name descname"><span class="pre">re_repeat_range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_count</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_repeat_range"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_repeat_range" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_repeat_range'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching between min and max occurrences of the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pattern</strong> (<em>str</em>) – The pattern</p></li>
+<li><p><strong>min_count</strong> (<em>int</em>) – Minimum number of repetitions</p></li>
+<li><p><strong>max_count</strong> (<em>int</em><em>, </em><em>optional</em>) – Maximum number of repetitions. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching specified range of occurrences</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_repeat_range</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'a{2,4}'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_repeat_range</span><span class="p">(</span><span class="s1">'[abc]'</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</span><span id="line-4"><span class="go">'[abc]{3,}'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_capture">
+<span class="sig-name descname"><span class="pre">re_capture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_capture"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_capture" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_capture'"><span>#</span></a></dt>
+<dd><p>Create a capturing group containing the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern to capture</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Capturing group</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_capture</span><span class="p">(</span><span class="s1">'\w+'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'(\w+)'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_group">
+<span class="sig-name descname"><span class="pre">re_group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_group" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_group'"><span>#</span></a></dt>
+<dd><p>Create a non-capturing group containing the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern to group</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Non-capturing group</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_group</span><span class="p">(</span><span class="s1">'\w+'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'(?:\w+)'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_lookahead">
+<span class="sig-name descname"><span class="pre">re_lookahead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_lookahead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_lookahead" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_lookahead'"><span>#</span></a></dt>
+<dd><p>Create a positive lookahead assertion for the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern to look ahead for</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Positive lookahead assertion</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_lookahead</span><span class="p">(</span><span class="s1">'\d+'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'(?=\d+)'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_negative_lookahead">
+<span class="sig-name descname"><span class="pre">re_negative_lookahead</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_negative_lookahead"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_negative_lookahead" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_negative_lookahead'"><span>#</span></a></dt>
+<dd><p>Create a negative lookahead assertion for the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern to not look ahead for</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Negative lookahead assertion</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_negative_lookahead</span><span class="p">(</span><span class="s1">'\d+'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'(?!\d+)'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_whole_word">
+<span class="sig-name descname"><span class="pre">re_whole_word</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">word</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_whole_word"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_whole_word" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_whole_word'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching a whole word.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>word</strong> (<em>str</em>) – The word to match</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching the whole word</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_whole_word</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'\bhello\b'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_starts_with">
+<span class="sig-name descname"><span class="pre">re_starts_with</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_starts_with"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_starts_with" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_starts_with'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching a string starting with the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern that should start the string</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching a string starting with pattern</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_starts_with</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'^hello'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_ends_with">
+<span class="sig-name descname"><span class="pre">re_ends_with</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_ends_with"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_ends_with" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_ends_with'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching a string ending with the input pattern.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pattern</strong> (<em>str</em>) – The pattern that should end the string</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching a string ending with pattern</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_ends_with</span><span class="p">(</span><span class="s1">'world'</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'world$'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_word_list">
+<span class="sig-name descname"><span class="pre">re_word_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_word_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_word_list" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_word_list'"><span>#</span></a></dt>
+<dd><p>Create a pattern matching any word from a list of words.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>words</strong> (<em>list</em>) – List of words to match</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Pattern matching any of the provided words</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_word_list</span><span class="p">([</span><span class="s1">'cat'</span><span class="p">,</span> <span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'bird'</span><span class="p">])</span>
+</span><span id="line-2"><span class="go">'\b(cat|dog|bird)\b'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_date">
+<span class="sig-name descname"><span class="pre">re_date</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_date"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_date" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_date'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching common date formats (YYYY-MM-DD or MM/DD/YYYY).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching common date formats</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_date</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'\b(\d{4}-\d{2}-\d{2}|\d{1,2}/\d{1,2}/\d{4})\b'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_time">
+<span class="sig-name descname"><span class="pre">re_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_time" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_time'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching common time formats (HH:MM:SS or HH:MM).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching common time formats</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_time</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'\b([01]?\d|2[0-3]):[0-5]\d(:[0-5]\d)?\b'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_email">
+<span class="sig-name descname"><span class="pre">re_email</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_email"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_email" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_email'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching common email address formats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching email addresses</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_email</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_url">
+<span class="sig-name descname"><span class="pre">re_url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_url"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_url" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_url'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching common URL formats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching URLs</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_url</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'https?://[\w.-]+\.\w+(/[\w./\-?=&amp;%]*)?'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.re_phone_us">
+<span class="sig-name descname"><span class="pre">re_phone_us</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/regex_utils.html#re_phone_us"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.re_phone_us" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.re_phone_us'"><span>#</span></a></dt>
+<dd><p>Return a pattern matching US phone number formats.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Pattern matching US phone numbers</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><em>str</em></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">re_phone_us</span><span class="p">()</span>
+</span><span id="line-2"><span class="go">'\b(\+?1[-.])?\(?\d{3}\)?[-.]?\d{3}[-.]?\d{4}\b'</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+</section>
+<section id="cheatsheets">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Cheatsheets</a><a class="headerlink" href="#cheatsheets" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#cheatsheets'"><span>#</span></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py" id="tidystring.get_regex_cheatsheet">
 <span class="sig-name descname"><span class="pre">get_regex_cheatsheet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/cheatsheet.html#get_regex_cheatsheet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.get_regex_cheatsheet" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.get_regex_cheatsheet'"><span>#</span></a></dt>
@@ -921,15 +1496,19 @@ n (int, optional): Number of replacements to make. Defaults to None (all occurre
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="tidystring.get_tidystring_cheatsheet">
-<span class="sig-name descname"><span class="pre">get_tidystring_cheatsheet</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/cheatsheet.html#get_tidystring_cheatsheet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.get_tidystring_cheatsheet" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.get_tidystring_cheatsheet'"><span>#</span></a></dt>
-<dd><p>Returns a comprehensive DataFrame containing all tidystring functions.</p>
-<p>This combines all the individual cheatsheets into a single reference table.</p>
+<span class="sig-name descname"><span class="pre">get_tidystring_cheatsheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">group</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/cheatsheet.html#get_tidystring_cheatsheet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.get_tidystring_cheatsheet" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.get_tidystring_cheatsheet'"><span>#</span></a></dt>
+<dd><p>Returns a comprehensive DataFrame containing tidystring functions.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><p>A DataFrame with all function names, descriptions, and examples</p>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>group</strong> (<em>str</em><em>, </em><em>optional</em>) – Filter by function group. Options:
+‘basic’, ‘case’, ‘detection’, ‘extraction’, ‘modification’, ‘regex’, ‘input_types’.
+If None, returns all tidystring functions. Defaults to None.</p>
 </dd>
-<dt class="field-even">Return type<span class="colon">:</span></dt>
-<dd class="field-even"><p>pd.DataFrame</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A DataFrame with function names, descriptions, examples, and groups</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
@@ -944,6 +1523,54 @@ n (int, optional): Number of replacements to make. Defaults to None (all occurre
 </dl>
 </dd></dl>
 </section>
+<section id="miscellaneous">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Miscellaneous</a><a class="headerlink" href="#miscellaneous" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#miscellaneous'"><span>#</span></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.camel_to_snake">
+<span class="sig-name descname"><span class="pre">camel_to_snake</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#camel_to_snake"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.camel_to_snake" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.camel_to_snake'"><span>#</span></a></dt>
+<dd><p>Convert camel case string to snake case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Camel case string or collection</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Snake case string or collection</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">camel_to_snake</span><span class="p">(</span><span class="s2">"camelCase"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'camel_case'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">camel_to_snake</span><span class="p">([</span><span class="s2">"helloWorld"</span><span class="p">,</span> <span class="s2">"pythonTest"</span><span class="p">])</span>
+</span><span id="line-4"><span class="go">['hello_world', 'python_test']</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="tidystring.snake_to_camel">
+<span class="sig-name descname"><span class="pre">snake_to_camel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/tidystring/methods.html#snake_to_camel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#tidystring.snake_to_camel" title="Link to this definition" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#tidystring.snake_to_camel'"><span>#</span></a></dt>
+<dd><p>Convert snake case string to camel case.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em><em>, </em><em>list</em><em>, or </em><em>pd.Series</em>) – Snake case string or collection</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Camel case string or collection</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><em>str</em>, <em>list</em>, or pd.Series</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="gp">&gt;&gt;&gt; </span><span class="n">snake_to_camel</span><span class="p">(</span><span class="s2">"snake_case"</span><span class="p">)</span>
+</span><span id="line-2"><span class="go">'SnakeCase'</span>
+</span><span id="line-3"><span class="gp">&gt;&gt;&gt; </span><span class="n">snake_to_camel</span><span class="p">([</span><span class="s2">"hello_world"</span><span class="p">,</span> <span class="s2">"python_test"</span><span class="p">])</span>
+</span><span id="line-4"><span class="go">['HelloWorld', 'PythonTest']</span>
+</span></code></pre></div>
+</div>
+</dd></dl>
 </section>
 </section>
 </div></div><aside class="hidden text-sm xl:block" id="right-sidebar">
@@ -971,18 +1598,54 @@ n (int, optional): Number of replacements to make. Defaults to None (all occurre
 <li><a :data-current="activeSection === '#tidystring.str_to_upper'" class="reference internal" href="#tidystring.str_to_upper"><code class="docutils literal notranslate"><span class="pre">str_to_upper()</span></code></a></li>
 <li><a :data-current="activeSection === '#tidystring.str_to_lower'" class="reference internal" href="#tidystring.str_to_lower"><code class="docutils literal notranslate"><span class="pre">str_to_lower()</span></code></a></li>
 <li><a :data-current="activeSection === '#tidystring.str_upper_cut'" class="reference internal" href="#tidystring.str_upper_cut"><code class="docutils literal notranslate"><span class="pre">str_upper_cut()</span></code></a></li>
-<li><a :data-current="activeSection === '#tidystring.camel_to_snake'" class="reference internal" href="#tidystring.camel_to_snake"><code class="docutils literal notranslate"><span class="pre">camel_to_snake()</span></code></a></li>
-<li><a :data-current="activeSection === '#tidystring.snake_to_camel'" class="reference internal" href="#tidystring.snake_to_camel"><code class="docutils literal notranslate"><span class="pre">snake_to_camel()</span></code></a></li>
 <li><a :data-current="activeSection === '#tidystring.str_concat'" class="reference internal" href="#tidystring.str_concat"><code class="docutils literal notranslate"><span class="pre">str_concat()</span></code></a></li>
 <li><a :data-current="activeSection === '#tidystring.str_search_apply'" class="reference internal" href="#tidystring.str_search_apply"><code class="docutils literal notranslate"><span class="pre">str_search_apply()</span></code></a></li>
 <li><a :data-current="activeSection === '#tidystring.str_search_recase'" class="reference internal" href="#tidystring.str_search_recase"><code class="docutils literal notranslate"><span class="pre">str_search_recase()</span></code></a></li>
 <li><a :data-current="activeSection === '#tidystring.str_dash_to_space'" class="reference internal" href="#tidystring.str_dash_to_space"><code class="docutils literal notranslate"><span class="pre">str_dash_to_space()</span></code></a></li>
-<li><a :data-current="activeSection === '#the-cheatsheets'" class="reference internal" href="#the-cheatsheets">The Cheatsheets</a><ul>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#regex-helpers'" class="reference internal" href="#regex-helpers">Regex Helpers</a><ul>
+<li><a :data-current="activeSection === '#tidystring.re_literal'" class="reference internal" href="#tidystring.re_literal"><code class="docutils literal notranslate"><span class="pre">re_literal()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_or'" class="reference internal" href="#tidystring.re_or"><code class="docutils literal notranslate"><span class="pre">re_or()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_either'" class="reference internal" href="#tidystring.re_either"><code class="docutils literal notranslate"><span class="pre">re_either()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_not_chars'" class="reference internal" href="#tidystring.re_not_chars"><code class="docutils literal notranslate"><span class="pre">re_not_chars()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_chars'" class="reference internal" href="#tidystring.re_chars"><code class="docutils literal notranslate"><span class="pre">re_chars()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_digit'" class="reference internal" href="#tidystring.re_digit"><code class="docutils literal notranslate"><span class="pre">re_digit()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_word'" class="reference internal" href="#tidystring.re_word"><code class="docutils literal notranslate"><span class="pre">re_word()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_space'" class="reference internal" href="#tidystring.re_space"><code class="docutils literal notranslate"><span class="pre">re_space()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_any'" class="reference internal" href="#tidystring.re_any"><code class="docutils literal notranslate"><span class="pre">re_any()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_start'" class="reference internal" href="#tidystring.re_start"><code class="docutils literal notranslate"><span class="pre">re_start()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_end'" class="reference internal" href="#tidystring.re_end"><code class="docutils literal notranslate"><span class="pre">re_end()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_boundary'" class="reference internal" href="#tidystring.re_boundary"><code class="docutils literal notranslate"><span class="pre">re_boundary()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_zero_or_more'" class="reference internal" href="#tidystring.re_zero_or_more"><code class="docutils literal notranslate"><span class="pre">re_zero_or_more()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_one_or_more'" class="reference internal" href="#tidystring.re_one_or_more"><code class="docutils literal notranslate"><span class="pre">re_one_or_more()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_optional'" class="reference internal" href="#tidystring.re_optional"><code class="docutils literal notranslate"><span class="pre">re_optional()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_repeat'" class="reference internal" href="#tidystring.re_repeat"><code class="docutils literal notranslate"><span class="pre">re_repeat()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_repeat_range'" class="reference internal" href="#tidystring.re_repeat_range"><code class="docutils literal notranslate"><span class="pre">re_repeat_range()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_capture'" class="reference internal" href="#tidystring.re_capture"><code class="docutils literal notranslate"><span class="pre">re_capture()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_group'" class="reference internal" href="#tidystring.re_group"><code class="docutils literal notranslate"><span class="pre">re_group()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_lookahead'" class="reference internal" href="#tidystring.re_lookahead"><code class="docutils literal notranslate"><span class="pre">re_lookahead()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_negative_lookahead'" class="reference internal" href="#tidystring.re_negative_lookahead"><code class="docutils literal notranslate"><span class="pre">re_negative_lookahead()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_whole_word'" class="reference internal" href="#tidystring.re_whole_word"><code class="docutils literal notranslate"><span class="pre">re_whole_word()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_starts_with'" class="reference internal" href="#tidystring.re_starts_with"><code class="docutils literal notranslate"><span class="pre">re_starts_with()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_ends_with'" class="reference internal" href="#tidystring.re_ends_with"><code class="docutils literal notranslate"><span class="pre">re_ends_with()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_word_list'" class="reference internal" href="#tidystring.re_word_list"><code class="docutils literal notranslate"><span class="pre">re_word_list()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_date'" class="reference internal" href="#tidystring.re_date"><code class="docutils literal notranslate"><span class="pre">re_date()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_time'" class="reference internal" href="#tidystring.re_time"><code class="docutils literal notranslate"><span class="pre">re_time()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_email'" class="reference internal" href="#tidystring.re_email"><code class="docutils literal notranslate"><span class="pre">re_email()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_url'" class="reference internal" href="#tidystring.re_url"><code class="docutils literal notranslate"><span class="pre">re_url()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.re_phone_us'" class="reference internal" href="#tidystring.re_phone_us"><code class="docutils literal notranslate"><span class="pre">re_phone_us()</span></code></a></li>
+</ul>
+</li>
+<li><a :data-current="activeSection === '#cheatsheets'" class="reference internal" href="#cheatsheets">Cheatsheets</a><ul>
 <li><a :data-current="activeSection === '#tidystring.get_regex_cheatsheet'" class="reference internal" href="#tidystring.get_regex_cheatsheet"><code class="docutils literal notranslate"><span class="pre">get_regex_cheatsheet()</span></code></a></li>
 <li><a :data-current="activeSection === '#tidystring.get_tidystring_cheatsheet'" class="reference internal" href="#tidystring.get_tidystring_cheatsheet"><code class="docutils literal notranslate"><span class="pre">get_tidystring_cheatsheet()</span></code></a></li>
 <li><a :data-current="activeSection === '#tidystring.print_cheatsheet'" class="reference internal" href="#tidystring.print_cheatsheet"><code class="docutils literal notranslate"><span class="pre">print_cheatsheet()</span></code></a></li>
 </ul>
 </li>
+<li><a :data-current="activeSection === '#miscellaneous'" class="reference internal" href="#miscellaneous">Miscellaneous</a><ul>
+<li><a :data-current="activeSection === '#tidystring.camel_to_snake'" class="reference internal" href="#tidystring.camel_to_snake"><code class="docutils literal notranslate"><span class="pre">camel_to_snake()</span></code></a></li>
+<li><a :data-current="activeSection === '#tidystring.snake_to_camel'" class="reference internal" href="#tidystring.snake_to_camel"><code class="docutils literal notranslate"><span class="pre">snake_to_camel()</span></code></a></li>
 </ul>
 </li>
 </ul>
