@@ -139,6 +139,50 @@ Additional `tidystring` functions not in `stringr`:
 
 Check out the [documentation]() for more information.
 
+## Cheatsheets and Regex Utilities
+
+`tidystring` also includes cheatsheets and regex helper functions to make string manipulation even easier:
+
+### Interactive Cheatsheets
+
+Get instant reference guides for all `tidystring` functions with built-in cheatsheets:
+
+```python
+from tidystring import get_basic_cheatsheet, get_combined_cheatsheet, print_cheatsheet
+
+# View all basic functions
+basic_df = get_basic_cheatsheet()
+print_cheatsheet(basic_df)
+
+# View all functions in one comprehensive table
+all_df = get_combined_cheatsheet()
+print_cheatsheet(all_df)
+```
+
+Available cheatsheets include: basic operations, case conversion, pattern detection, extraction, modification, regex patterns, input type handling, and a combined reference.
+
+### Regex Pattern Builders
+
+Build complex regular expressions with simple, readable functions:
+
+```python
+from tidystring import re_digit, re_capture, re_repeat, re_or, re_email
+
+# Create a pattern for US phone numbers
+phone_pattern = re_or(
+    re_capture(f"{re_digit()}{re_repeat(3)}-{re_digit()}{re_repeat(3)}-{re_digit()}{re_repeat(4)}"),
+    re_capture(f"\\({re_digit()}{re_repeat(3)}\\) {re_digit()}{re_repeat(3)}-{re_digit()}{re_repeat(4)}")
+)
+
+# Use pre-built patterns for common formats
+url_pattern = re_url()
+
+# Use patterns with string functions
+from tidystring import str_extract
+urls = ["https://www.example.com", "No url here"]
+str_extract(urls, url_pattern)  # ['https://www.example.com', None]
+```
+
 ## Tidyverse-Inspired Python
 
 There are increasingly a number of other Python packages that are helping to bring the beautiful tidyverse to Python. Here's a couple to consider:

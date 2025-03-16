@@ -93,7 +93,3 @@ While Python's built-in string methods and pandas string accessor are powerful, 
 2. Seamless switching between different string representations
 3. Consistently preserved return types
 4. Additional utility functions not available in standard libraries
-
-## Next Steps
-
-Dive into the thematic documentation pages to explore the full range of functions and capabilities.

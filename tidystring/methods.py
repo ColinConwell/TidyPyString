@@ -228,6 +228,7 @@ def str_split(string, pattern, maxsplit=-1):
     result = string.split(pattern, n=maxsplit)
     return _string_output(result, str_type)
 
+
 def str_trim(string, **kwargs):
     """Remove whitespace from start and end of string.
 
@@ -249,6 +250,7 @@ def str_trim(string, **kwargs):
     string, str_type = _string_intake(string)
     result = string.strip(**kwargs)
     return _string_output(result, str_type)
+
 
 def str_length(string, **kwargs):
     """Get the length of a string.

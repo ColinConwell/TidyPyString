@@ -11,11 +11,12 @@ A Python package for consistent, intuitive string manipulation inspired by R's `
    :maxdepth: 2
 
    overview
-   usage/string_basics
-   usage/string_detection
-   usage/string_extraction
-   usage/string_modification
-   usage/string_case
-   usage/string_utilities
-   usage/advanced_usage
+   usage/string_basics.md
+   usage/string_detection.md
+   usage/string_extraction.md
+   usage/string_modification.md
+   usage/string_case.md
+   usage/string_utilities.md
+   usage/advanced_usage.md
+   cheats
    api-ref

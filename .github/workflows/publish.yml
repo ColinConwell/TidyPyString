@@ -41,7 +41,7 @@ jobs:
 
       - name: Run basic import check
         run: |
-          python -c "import nbqol; print(f'Successfully imported nbqol')"
+          python -c "import tidystring; print(f'Successfully imported tidystring')"
 
   hatch-test:
     runs-on: ubuntu-latest
@@ -87,7 +87,7 @@ jobs:
           pip install dist/*.whl
           
           # Run basic import check
-          python -c "import nbqol; print(f'Successfully imported nbqol from wheel')"
+          python -c "import tidystring; print(f'Successfully imported tidystring from wheel')"
           
           # Deactivate the environment
           deactivate
@@ -99,7 +99,7 @@ jobs:
           pip install dist/*.tar.gz
           
           # Run basic import check
-          python -c "import nbqol; print(f'Successfully imported nbqol from sdist')"
+          python -c "import tidystring; print(f'Successfully imported tidystring from sdist')"
           
           # Deactivate the environment
           deactivate
