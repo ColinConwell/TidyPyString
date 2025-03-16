@@ -70,13 +70,14 @@
 <div class="overflow-y-auto h-full w-full relative pr-6"><nav class="table w-full min-w-full my-6 lg:my-8">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="usage/string_basics.html">Some Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/string_basics.html">The Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/string_detection.html">Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/string_extraction.html">Extraction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/string_modification.html">Modification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/string_case.html">(Re)Casing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/string_utilities.html">Key Utilities</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/advanced_usage.html">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cheats.html">Cheatsheets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api-ref.html">API Reference</a></li>
 </ul>
 </nav>
@@ -103,10 +104,9 @@
 <li class="toctree-l2"><a class="reference internal" href="overview.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#quick-start">Quick Start</a></li>
 <li class="toctree-l2"><a class="reference internal" href="overview.html#why-tidystring">Why <code class="docutils literal notranslate"><span class="pre">tidystring</span></code>?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="overview.html#next-steps">Next Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="usage/string_basics.html">Some Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage/string_basics.html">The Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/string_detection.html">Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/string_extraction.html">Extraction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="usage/string_modification.html">Modification</a></li>
@@ -116,37 +116,23 @@
 <li class="toctree-l2"><a class="reference internal" href="usage/advanced_usage.html#data-cleaning-workflow">Data Cleaning Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage/advanced_usage.html#working-with-dataframes">Working with DataFrames</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage/advanced_usage.html#custom-use-cases">Custom Use Cases</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage/advanced_usage.html#yikes-regular-expressions">Yikes! Regular Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usage/advanced_usage.html#regular-expressions">Regular Expressions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cheats.html">Cheatsheets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#basic-operations">Basic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#case-conversion">Case Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#pattern-detection">Pattern Detection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#pattern-extraction">Pattern Extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#string-modification">String Modification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#input-type-handling">Input Type Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#regex-patterns">Regex Patterns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#regex-utility-functions">Regex Utility Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cheats.html#programmatic-access">Programmatic Access</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api-ref.html">API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_replace"><code class="docutils literal notranslate"><span class="pre">str_replace()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_detect"><code class="docutils literal notranslate"><span class="pre">str_detect()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_remove"><code class="docutils literal notranslate"><span class="pre">str_remove()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_extract"><code class="docutils literal notranslate"><span class="pre">str_extract()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_split"><code class="docutils literal notranslate"><span class="pre">str_split()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_trim"><code class="docutils literal notranslate"><span class="pre">str_trim()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_length"><code class="docutils literal notranslate"><span class="pre">str_length()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_sub"><code class="docutils literal notranslate"><span class="pre">str_sub()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_count"><code class="docutils literal notranslate"><span class="pre">str_count()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_locate"><code class="docutils literal notranslate"><span class="pre">str_locate()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_locate_all"><code class="docutils literal notranslate"><span class="pre">str_locate_all()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_pad"><code class="docutils literal notranslate"><span class="pre">str_pad()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_dup"><code class="docutils literal notranslate"><span class="pre">str_dup()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_squish"><code class="docutils literal notranslate"><span class="pre">str_squish()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_wrap"><code class="docutils literal notranslate"><span class="pre">str_wrap()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_to_title"><code class="docutils literal notranslate"><span class="pre">str_to_title()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_to_upper"><code class="docutils literal notranslate"><span class="pre">str_to_upper()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_to_lower"><code class="docutils literal notranslate"><span class="pre">str_to_lower()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_upper_cut"><code class="docutils literal notranslate"><span class="pre">str_upper_cut()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_concat"><code class="docutils literal notranslate"><span class="pre">str_concat()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_search_apply"><code class="docutils literal notranslate"><span class="pre">str_search_apply()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_search_recase"><code class="docutils literal notranslate"><span class="pre">str_search_recase()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_dash_to_space"><code class="docutils literal notranslate"><span class="pre">str_dash_to_space()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_startswith"><code class="docutils literal notranslate"><span class="pre">str_startswith()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.str_endswith"><code class="docutils literal notranslate"><span class="pre">str_endswith()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.camel_to_snake"><code class="docutils literal notranslate"><span class="pre">camel_to_snake()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-ref.html#tidystring.snake_to_camel"><code class="docutils literal notranslate"><span class="pre">snake_to_camel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-ref.html#core-functions">Core Functions</a></li>
 </ul>
 </li>
 </ul>

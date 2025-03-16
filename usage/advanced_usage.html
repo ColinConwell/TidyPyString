@@ -15,7 +15,7 @@
 <link href="../_static/styles/book.css?v=3ce7430b" rel="stylesheet" type="text/css"/>
 <link href="../search.html" rel="search" title="Search"/>
 <link href="../genindex.html" rel="index" title="Index"/>
-<link href="../api-ref.html" rel="next" title="API Reference"/>
+<link href="../cheats.html" rel="next" title="Cheatsheets"/>
 <link href="string_utilities.html" rel="prev" title="Key Utilities"/>
 <script>
     <!-- Prevent Flash of wrong theme -->
@@ -71,13 +71,14 @@
 <div class="overflow-y-auto h-full w-full relative pr-6"><nav class="table w-full min-w-full my-6 lg:my-8">
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../overview.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="string_basics.html">Some Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="string_basics.html">The Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string_detection.html">Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string_extraction.html">Extraction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string_modification.html">Modification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string_case.html">(Re)Casing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="string_utilities.html">Key Utilities</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Advanced Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../cheats.html">Cheatsheets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api-ref.html">API Reference</a></li>
 </ul>
 </nav>
@@ -101,7 +102,7 @@
 <div class="mr-1">/</div><span aria-current="page" class="font-medium text-foreground overflow-hidden text-ellipsis whitespace-nowrap">Advanced Usage</span>
 </nav>
 <div id="content" role="main">
-<section id="advanced-usage">
+<section class="tex2jax_ignore mathjax_ignore" id="advanced-usage">
 <h1>Advanced Usage<a class="headerlink" href="#advanced-usage" title="Link to this heading"><span>#</span></a></h1>
 <p>This section provides examples of more advanced usage patterns and combinations of tidystring functions.</p>
 <section id="data-cleaning-workflow">
@@ -219,14 +220,15 @@
 </span><span id="line-45"><span class="nb">print</span><span class="p">(</span><span class="n">markdown_links</span><span class="p">)</span>
 </span><span id="line-46"><span class="c1"># ['[EXAMPLE.COM](https://example.com/products?id=123)',</span>
 </span><span id="line-47"><span class="c1">#  '[EXAMPLE.ORG](http://example.org/about)',</span>
+</span><span id="line-48"><span class="c1">#  '[API.EXAMPLE.NET](https://api.example.net/v2/users/456)']</span>
 </span></code></pre></div>
 </div>
 </section>
-<section id="yikes-regular-expressions">
-<h2>Yikes! Regular Expressions<a class="headerlink" href="#yikes-regular-expressions" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#yikes-regular-expressions'"><span>#</span></a></h2>
+<section id="regular-expressions">
+<h2>Regular Expressions<a class="headerlink" href="#regular-expressions" title="Link to this heading" x-intersect.margin.0%.0%.-70%.0%="activeSection = '#regular-expressions'"><span>#</span></a></h2>
 <p>Using regular expressions for more complex text processing:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><code><span id="line-1"><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-</span><span id="line-2"><span class="kn">from</span><span class="w"> </span><span class="nn">tidystring</span><span class="w"> </span><span class="kn">import</span> <span class="n">str_extract</span><span class="p">,</span> <span class="n">str_replace</span><span class="p">,</span> <span class="n">str_search_recase</span>
+</span><span id="line-2"><span class="kn">from</span><span class="w"> </span><span class="nn">tidystring</span><span class="w"> </span><span class="kn">import</span> <span class="n">str_extract</span><span class="p">,</span> <span class="n">str_replace</span><span class="p">,</span> <span class="n">str_search_recase</span><span class="p">,</span> <span class="n">str_to_upper</span>
 </span><span id="line-3">
 </span><span id="line-4"><span class="c1"># Extract structured information from text</span>
 </span><span id="line-5"><span class="n">texts</span> <span class="o">=</span> <span class="p">[</span>
@@ -263,7 +265,7 @@
 <li><a :data-current="activeSection === '#data-cleaning-workflow'" class="reference internal" href="#data-cleaning-workflow">Data Cleaning Workflow</a></li>
 <li><a :data-current="activeSection === '#working-with-dataframes'" class="reference internal" href="#working-with-dataframes">Working with DataFrames</a></li>
 <li><a :data-current="activeSection === '#custom-use-cases'" class="reference internal" href="#custom-use-cases">Custom Use Cases</a></li>
-<li><a :data-current="activeSection === '#yikes-regular-expressions'" class="reference internal" href="#yikes-regular-expressions">Yikes! Regular Expressions</a></li>
+<li><a :data-current="activeSection === '#regular-expressions'" class="reference internal" href="#regular-expressions">Regular Expressions</a></li>
 </ul>
 </div>
 </aside>
