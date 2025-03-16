@@ -1,10 +1,9 @@
-String Basics
-=============
+Some Basics
+===========
 
-This section covers basic string operations such as getting the length of strings, padding strings, 
+This section covers basic string operations such as getting the length of strings, padding strings,
 and creating duplicated strings.
 
-str_length
 ----------
 
 Get the length of a string.
@@ -28,7 +27,7 @@ Get the length of a string.
     # 2    6
     # dtype: int64
 
-str_pad
+
 -------
 
 Pad a string to a specified width.
@@ -52,7 +51,7 @@ Pad a string to a specified width.
     # Works with collections
     str_pad(["a", "bb", "ccc"], 5, side="right")  # ["a    ", "bb   ", "ccc  "]
 
-str_dup
+
 -------
 
 Duplicate strings multiple times.
@@ -75,7 +74,7 @@ Duplicate strings multiple times.
     # 2    zz
     # dtype: object
 
-str_squish
+
 ----------
 
 Trim whitespace from start and end, and replace all internal whitespace with a single space.
@@ -94,7 +93,7 @@ Trim whitespace from start and end, and replace all internal whitespace with a s
     texts = ["  a  b  ", " c   d "]
     str_squish(texts)  # ["a b", "c d"]
 
-str_wrap
+
 --------
 
 Wrap text to a specified width.
@@ -116,4 +115,3 @@ Wrap text to a specified width.
     str_wrap("A longer paragraph that wraps to multiple lines.", width=20, exdent=2)
     # "A longer paragraph
     #   that wraps to
-    #   multiple lines."

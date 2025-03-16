@@ -1,9 +1,9 @@
-String Modification
-=================
+Modification
+============
 
 This section covers functions for modifying and transforming string content.
 
-str_replace
+
 ----------
 
 Replace all occurrences of a pattern in a string.
@@ -34,7 +34,7 @@ Replace all occurrences of a pattern in a string.
     # 2    chErry
     # dtype: object
 
-str_remove
+
 ---------
 
 Remove all occurrences of a pattern from a string.
@@ -61,7 +61,7 @@ Remove all occurrences of a pattern from a string.
     # 2    C789
     # dtype: object
 
-str_trim
+
 -------
 
 Remove whitespace from the start and end of a string.
@@ -91,7 +91,7 @@ Remove whitespace from the start and end of a string.
     # 2     science
     # dtype: object
 
-str_dash_to_space
+
 ----------------
 
 Replace all occurrences of specified dashes with spaces.
@@ -118,4 +118,3 @@ Replace all occurrences of specified dashes with spaces.
     str_dash_to_space(s)
     # 0    machine learning
     # 1     deep learning
-    # dtype: object

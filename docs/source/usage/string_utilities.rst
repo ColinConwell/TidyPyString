@@ -1,9 +1,9 @@
-String Utilities
-===============
+Key Utilities
+=============
 
 This section covers utility functions for working with strings.
 
-str_concat
+
 ---------
 
 Concatenate strings with a separator.
@@ -37,7 +37,7 @@ Concatenate strings with a separator.
     # 1    Jane Smith
     # dtype: object
 
-str_search_apply
+
 --------------
 
 Apply a function to each regex match in string.
@@ -66,7 +66,7 @@ Apply a function to each regex match in string.
     # 1    python [3].[9]
     # dtype: object
 
-str_search_recase
+
 ---------------
 
 Change the case of text matching a pattern in string.
@@ -105,4 +105,3 @@ Change the case of text matching a pattern in string.
     str_search_recase(s, "\\w+", "title")
     # 0    Snake_case
     # 1     CamelCase
-    # dtype: object

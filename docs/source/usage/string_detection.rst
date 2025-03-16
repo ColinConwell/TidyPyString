@@ -1,9 +1,9 @@
-String Detection
-===============
+Detection
+=========
 
 This section covers functions that detect patterns in strings and return boolean values.
 
-str_detect
+
 ---------
 
 Detect the presence of a pattern in a string.
@@ -33,7 +33,7 @@ Detect the presence of a pattern in a string.
     # 2     True
     # dtype: bool
 
-str_startswith
+
 -------------
 
 Check if a string starts with a specific pattern.
@@ -58,7 +58,7 @@ Check if a string starts with a specific pattern.
     # 2    False
     # dtype: bool
 
-str_endswith
+
 -----------
 
 Check if a string ends with a specific pattern.
@@ -83,7 +83,7 @@ Check if a string ends with a specific pattern.
     # 2     True
     # dtype: bool
 
-str_count
+
 --------
 
 Count occurrences of a pattern in a string.
@@ -109,4 +109,3 @@ Count occurrences of a pattern in a string.
     # 0    1
     # 1    0
     # 2    3
-    # dtype: int64

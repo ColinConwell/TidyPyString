@@ -10,9 +10,10 @@ sys.path.insert(0, os.path.abspath('../'))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'TidyPyString'
+version = '0.1.0'
 release = '0.1.0'
 author = 'Colin Conwell'
-copyright = '2024, Colin Conwell'
+copyright = '2025, Colin Conwell'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -67,13 +68,8 @@ napoleon_include_init_with_doc = True
 html_title = "TidyPyString Documentation"
 html_permalinks_icon = '<span>#</span>'
 
-# Try to use the awesome theme if available, otherwise fall back to the RTD theme
-try:
-    import sphinxawesome_theme
-    html_theme = 'sphinxawesome_theme'
-except ImportError:
-    html_theme = 'sphinx_rtd_theme'
 
+html_theme = 'sphinxawesome_theme'
 html_static_path = ['_static']
 html_css_files = ['styles/book.css']
 html_js_files = ['custom.js']

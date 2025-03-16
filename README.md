@@ -12,10 +12,6 @@ Install the package from PyPI:
 pip install tidystring
 ```
 
-Requirements:
-- Python 3.9 or higher
-- pandas 1.2.4 or higher
-
 Then, wrangle those strings:
 
 ```python
@@ -38,6 +34,39 @@ strings = pd.Series(strings)
 
 # replace "text" with "enum" in all strings
 ts.str_replace(strings, "text", "enum")
+```
+
+## Development
+
+This project uses [Hatch](https://hatch.pypa.io/) for project management. To get started with development:
+
+1. Install Hatch:
+```shell
+pip install hatch
+```
+
+2. Create a development environment:
+```shell
+hatch env create
+```
+
+3. Activate the environment:
+```shell
+hatch shell
+```
+
+4. Run tests:
+```shell
+hatch run test
+```
+
+5. Build documentation:
+```shell
+hatch run docs:build
+```
+   Or use the provided script:
+```shell
+python scripts/build_docs.py
 ```
 
 ## Inspired by [`StringR`](https://stringr.tidyverse.org/reference/index.html)

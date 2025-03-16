@@ -1,5 +1,5 @@
 Advanced Usage
-=============
+==============
 
 This section provides examples of more advanced usage patterns and combinations of tidystring functions.
 
@@ -34,42 +34,6 @@ Combining multiple functions for effective data cleaning:
     # 1    product b: USD 25.50
     # 2    product c: USD 15.75
     # dtype: object
-
-Text Processing with Regular Expressions
---------------------------------------
-
-Using regular expressions for more complex text processing:
-
-.. code-block:: python
-
-    import pandas as pd
-    from tidystring import str_extract, str_replace, str_search_recase
-
-    # Extract structured information from text
-    texts = [
-        "Name: John Smith, Age: 35, Email: john@example.com",
-        "Name: Jane Doe, Age: 28, Email: jane@example.com",
-        "Name: Bob Johnson, Age: 42, Email: bob@example.com"
-    ]
-
-    # Extract names
-    names = str_extract(texts, "Name: ([^,]+)")
-    print(names)
-    # ['John Smith', 'Jane Doe', 'Bob Johnson']
-
-    # Extract emails and convert to uppercase
-    emails = str_extract(texts, "Email: ([^,]+)")
-    uppercase_emails = str_to_upper(emails)
-    print(uppercase_emails)
-    # ['JOHN@EXAMPLE.COM', 'JANE@EXAMPLE.COM', 'BOB@EXAMPLE.COM']
-
-    # Format text with multiple operations
-    formatted = str_search_recase(texts, "Name: ([^,]+)", "upper")
-    formatted = str_replace(formatted, "Age: ", "AGE: ")
-    print(formatted)
-    # ['NAME: JOHN SMITH, AGE: 35, Email: john@example.com',
-    #  'NAME: JANE DOE, AGE: 28, Email: jane@example.com',
-    #  'NAME: BOB JOHNSON, AGE: 42, Email: bob@example.com']
 
 Working with DataFrames
 ---------------------
@@ -109,7 +73,7 @@ Integrating tidystring with pandas DataFrames:
     # 2     Phone Mini 5"   PM-5-2022   $799.99    5      799.99    Phone
 
 Custom Use Cases
---------------
+----------------
 
 Some examples of custom use cases combining multiple functions:
 
@@ -123,17 +87,17 @@ Some examples of custom use cases combining multiple functions:
 
     # Normalizing names
     names = ["  John SMITH  ", "Jane DOE", "BOB johnson"]
-    
+
     # Extract first and last names, normalize case
     first_names = [str_trim(name).split()[0] for name in names]
     last_names = [str_trim(name).split()[1] for name in names]
-    
+
     normalized = str_concat(
         str_to_title(first_names),
         str_to_upper(last_names),
         sep=" "
     )
-    
+
     print(normalized)
     # ['John SMITH', 'Jane DOE', 'Bob JOHNSON']
 
@@ -143,12 +107,12 @@ Some examples of custom use cases combining multiple functions:
         "http://example.org/about",
         "https://api.example.net/v2/users/456"
     ]
-    
+
     # Extract domains
     domains = str_extract(urls, "://([^/]+)")
     print(domains)
     # ['example.com', 'example.org', 'api.example.net']
-    
+
     # Extract path
     paths = str_extract(urls, "://[^/]+(/[^?]*)")
     print(paths)
@@ -156,10 +120,45 @@ Some examples of custom use cases combining multiple functions:
 
     # Format as markdown links
     markdown_links = [
-        f"[{str_to_upper(domain)}]({url})" 
+        f"[{str_to_upper(domain)}]({url})"
         for domain, url in zip(domains, urls)
     ]
     print(markdown_links)
     # ['[EXAMPLE.COM](https://example.com/products?id=123)',
     #  '[EXAMPLE.ORG](http://example.org/about)',
-    #  '[API.EXAMPLE.NET](https://api.example.net/v2/users/456)']
+
+Yikes! Regular Expressions
+--------------------------
+
+Using regular expressions for more complex text processing:
+
+.. code-block:: python
+
+    import pandas as pd
+    from tidystring import str_extract, str_replace, str_search_recase
+
+    # Extract structured information from text
+    texts = [
+        "Name: John Smith, Age: 35, Email: john@example.com",
+        "Name: Jane Doe, Age: 28, Email: jane@example.com",
+        "Name: Bob Johnson, Age: 42, Email: bob@example.com"
+    ]
+
+    # Extract names
+    names = str_extract(texts, "Name: ([^,]+)")
+    print(names)
+    # ['John Smith', 'Jane Doe', 'Bob Johnson']
+
+    # Extract emails and convert to uppercase
+    emails = str_extract(texts, "Email: ([^,]+)")
+    uppercase_emails = str_to_upper(emails)
+    print(uppercase_emails)
+    # ['JOHN@EXAMPLE.COM', 'JANE@EXAMPLE.COM', 'BOB@EXAMPLE.COM']
+
+    # Format text with multiple operations
+    formatted = str_search_recase(texts, "Name: ([^,]+)", "upper")
+    formatted = str_replace(formatted, "Age: ", "AGE: ")
+    print(formatted)
+    # ['NAME: JOHN SMITH, AGE: 35, Email: john@example.com',
+    #  'NAME: JANE DOE, AGE: 28, Email: jane@example.com',
+    #  'NAME: BOB JOHNSON, AGE: 42, Email: bob@example.com']

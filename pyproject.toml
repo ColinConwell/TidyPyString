@@ -1,15 +1,96 @@
-[tool.poetry]
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
 name = "tidystring"
 version = "0.1.0"
 description = "Tidyverse-style string ops in Python."
-authors = ["Colin Conwell <colinconwell@gmail.com>"]
 readme = "README.md"
-packages = [{include = "tidystring"}]
+authors = [
+    {name = "Colin Conwell", email = "colinconwell@gmail.com"},
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.9,<4.0"
-pandas = ">=1.2.4"
+requires-python = ">=3.9,<4.0"
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+dependencies = [
+    "pandas>=1.2.4",
+]
+
+[project.optional-dependencies]
+docs = [
+    "sphinx>=7.0.0",
+    "sphinx_rtd_theme>=1.3.0",
+    "sphinxawesome-theme>=4.0.0",
+    "myst-parser>=2.0.0",
+]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/ColinConwell/TidyPyString"
+"Bug Tracker" = "https://github.com/ColinConwell/TidyPyString/issues"
+"Documentation" = "https://colinconwell.github.io/TidyPyString"
+
+[tool.hatch.build.targets.wheel]
+packages = ["tidystring"]
+
+[tool.hatch.envs.default]
+dependencies = [
+    "pytest>=7.0.0",
+]
+
+[tool.hatch.envs.docs]
+dependencies = [
+    "sphinx>=7.0.0",
+    "sphinx_rtd_theme>=1.3.0",
+    "sphinxawesome-theme>=4.0.0",
+    "myst-parser>=2.0.0",
+]
+
+[tool.hatch.envs.docs.scripts]
+build = "sphinx-build -b html docs docs/build/html"
+clean = "rm -rf docs/build"
+serve = "python -m http.server -d docs/build/html 8000"
+
+[tool.hatch.envs.test]
+dependencies = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.1.0",
+]
+
+[tool.hatch.envs.test.scripts]
+run = "pytest {args:tests}"
+cov = "pytest --cov=tidystring --cov-report=term-missing --cov-report=xml {args:tests}"
+
+[tool.hatch.envs.lint]
+dependencies = [
+    "black>=23.0.0",
+    "isort>=5.12.0",
+]
+
+[tool.hatch.envs.lint.scripts]
+style = [
+    "black {args:tidystring tests}",
+    "isort {args:tidystring tests}",
+]
+check = [
+    "black --check {args:tidystring tests}",
+    "isort --check {args:tidystring tests}",
+]
+
+[tool.pytest]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "-v"

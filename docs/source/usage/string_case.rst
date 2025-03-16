@@ -1,9 +1,9 @@
-String Case Operations
-====================
+(Re)Casing
+==========
 
 This section covers functions for converting between different string cases.
 
-str_to_upper
+
 -----------
 
 Convert a string to uppercase.
@@ -31,7 +31,7 @@ Convert a string to uppercase.
     # 2     JULIA
     # dtype: object
 
-str_to_lower
+
 -----------
 
 Convert a string to lowercase.
@@ -58,7 +58,7 @@ Convert a string to lowercase.
     # 2     julia
     # dtype: object
 
-str_to_title
+
 -----------
 
 Convert a string to title case.
@@ -88,7 +88,7 @@ Convert a string to title case.
     # 1              Computer Vision
     # dtype: object
 
-str_upper_cut
+
 ------------
 
 Capitalize the first n characters of a string.
@@ -116,7 +116,7 @@ Capitalize the first n characters of a string.
     # 2     Julia
     # dtype: object
 
-camel_to_snake
+
 -------------
 
 Convert a camel case string to snake case.
@@ -144,7 +144,7 @@ Convert a camel case string to snake case.
     # 2    total_price
     # dtype: object
 
-snake_to_camel
+
 -------------
 
 Convert a snake case string to camel case.
@@ -170,4 +170,3 @@ Convert a snake case string to camel case.
     # 0        UserId
     # 1    OrderCount
     # 2    TotalPrice
-    # dtype: object

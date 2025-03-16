@@ -1,9 +1,9 @@
-String Extraction
-===============
+Extraction
+==========
 
 This section covers functions for extracting parts of strings based on positions or patterns.
 
-str_extract
+
 ----------
 
 Extract the first match of a pattern from a string.
@@ -34,7 +34,7 @@ Extract the first match of a pattern from a string.
     # 1                  NaN
     # dtype: object
 
-str_sub
+
 ------
 
 Extract a substring based on start and end positions.
@@ -67,7 +67,7 @@ Extract a substring based on start and end positions.
     # 2    iw
     # dtype: object
 
-str_split
+
 --------
 
 Split a string into a list of components based on a pattern.
@@ -96,7 +96,7 @@ Split a string into a list of components based on a pattern.
     # 1    [three, four, five]
     # dtype: object
 
-str_locate
+
 ---------
 
 Find the first position of a pattern in a string.
@@ -123,7 +123,7 @@ Find the first position of a pattern in a string.
     # 2     1
     # dtype: int64
 
-str_locate_all
+
 -------------
 
 Find all positions of a pattern in a string.
@@ -147,4 +147,3 @@ Find all positions of a pattern in a string.
     str_locate_all(s, "i")
     # 0                []
     # 1    [[1, 2], [4, 5], [7, 8], [10, 11]]
-    # dtype: object

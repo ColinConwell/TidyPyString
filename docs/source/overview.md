@@ -1,4 +1,4 @@
-# Package Overview
+# Introduction
 
 `tidystring` is a Python package for performing consistent, intuitive string operations. Inspired by R's `stringr` package from the tidyverse, it provides a collection of functions that work seamlessly with different string representations in Python.
 
@@ -8,11 +8,10 @@
 - **Input Flexibility**: Works with single strings, lists of strings, and pandas Series
 - **Type Preservation**: Returns the same type as the input
 - **Intuitive Names**: Function names clearly indicate their purpose (e.g., `str_detect`, `str_extract`)
-- **Comprehensive Toolkit**: Covers detection, extraction, modification, case conversion, and more
 
 ## Installation
 
-You can install the package via pip:
+You can install the package from PyPI:
 
 ```shell
 pip install tidystring
@@ -56,10 +55,10 @@ TidyPyString provides functions in several categories:
 
 - **Detection**: `str_detect`, `str_startswith`, `str_endswith`, `str_count`
 - **Extraction**: `str_extract`, `str_sub`, `str_split`, `str_locate`, `str_locate_all`
-- **Modification**: `str_replace`, `str_remove`, `str_trim`, `str_dash_to_space`
+- **Modification**: `str_replace`, `str_concat`, `str_remove`, `str_trim`
 - **Case Conversion**: `str_to_upper`, `str_to_lower`, `str_to_title`, `str_upper_cut`, `camel_to_snake`, `snake_to_camel`
 - **String Basics**: `str_length`, `str_pad`, `str_dup`, `str_squish`, `str_wrap`
-- **Utilities**: `str_concat`, `str_search_apply`, `str_search_recase`
+- **Utilities**: `str_dash_to_space`, `str_search_apply`, `str_search_recase`
 
 ### Usage Examples
 
@@ -86,7 +85,7 @@ str_split("a,b,c", ",")  # ['a', 'b', 'c']
 str_concat("hello", "world", sep="-")  # 'hello-world'
 ```
 
-## Why TidyPyString?
+## Why `tidystring`?
 
 While Python's built-in string methods and pandas string accessor are powerful, TidyPyString offers:
 

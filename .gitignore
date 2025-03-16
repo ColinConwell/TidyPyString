@@ -6,6 +6,10 @@ devops/testing.ipynb
 .jupyter/
 .pretzel/
 
+# Secrets
+.env.*
+.secrets
+
 # Checkpoints / weights
 *.pt
 *.ckpt
